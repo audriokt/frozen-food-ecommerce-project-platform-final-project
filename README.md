@@ -8,13 +8,6 @@ This project is an **E-Commerce** platform that sells various types of **Frozen 
 - **Frontend:** Bootstrap (Responsive UI) 🎨  
 - **Database:** MySQL (Product & Order Management) 📊  
 
-## Features
-✅ **Product Management** → Admin can add, edit, and delete frozen food items  
-✅ **Checkout System** → Secure payment processing for users  
-✅ **User Authentication** → Registration and login with security validation  
-✅ **Admin Dashboard** → Sales analytics and order management  
-✅ **Responsive Design** → Optimized for desktop and mobile  
-
 ## Development Team 👨‍💻👩‍💻
 - **Audri Oktavia** (`235314220`)  
 - **Maria Petra Zetta** (`235314222`)  
