@@ -9,8 +9,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="icon" type="image/jpeg" href="<?= base_url('logo%20real.jpg') ?>">
-    <link rel="shortcut icon" href="<?= base_url('logo%20real.jpg') ?>">
+    <link rel="icon" type="image/x-icon" href="<?= base_url('favicon.ico') ?>">
+    <link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>">
 
 </head>
 <body style="background-color: #ffffff;">
@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="col-md-6 d-flex align-items-center justify-content-center">
-                                    <img src="<?= base_url('favicon.ico') ?>" alt="Illustration" style="max-height: 300px;">
+                                    <img src="<?= base_url('/public/images/logoku.jpg') ?>" alt="Illustration" style="max-height: 300px;">
                                 </div>
                             </div> 
                         </div>
