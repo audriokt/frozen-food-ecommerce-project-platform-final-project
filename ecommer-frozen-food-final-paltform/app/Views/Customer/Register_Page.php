@@ -22,7 +22,6 @@
                         <div class="card-body p-5">
                             <div class="row">
 
-                                <!-- Formulir Registrasi -->
                                 <div class="col-md-6">
                                     <h2 class="fw-bold text-center mb-5">DAFTAR</h2>
 
@@ -52,7 +51,6 @@
                                     </form>
                                 </div>
 
-                                <!-- Gambar -->
                                 <div class="col-md-6 d-flex align-items-center justify-content-center">
                                     <img src="<?= base_url('favicon.ico') ?>" alt="Illustration" style="max-height: 300px;">
                                 </div>
