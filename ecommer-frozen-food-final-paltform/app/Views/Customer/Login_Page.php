@@ -1,60 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <title>Bootstrap 5 Website Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-  .fakeimg {
-    height: 200px;
-    background: #aaa;
-  }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Login</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="icon" type="image/x-icon" href="<?= base_url('favicon.ico') ?>">
+    <link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>">
+
 </head>
-<body>
-<section class="vh-100">
-    <div class="container mt-3">
-    <div class="mt-4 p-5 bg-success text-green rounded">
+<body style="background-color: #ffffff;">
+  <section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <div class="card border-0 shadow">
+            <div class="card-body p-5">
+              <div class="row">
+
+                <div class="col-md-6">
+                  <h2 class="fw-bold text-center mb-5">MASUK</h2>
+
+                  <form action="/login" method="post">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <input type="email" name="email" class="form-control" placeholder="Email" required />
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <input type="password" name="password" class="form-control" placeholder="Kata Sandi" required />
+                    </div>
+
+                    <div class="d-flex justify-content-center mb-4">
+                      <button type="submit" class="btn btn-success btn-lg">Masuk</button>
+                    </div>
+
+                    <p class="text-center">Belum punya akun? 
+                      <a href="/register" class="fw-bold text-decoration-none">Daftar</a>
+                    </p>
+                  </form>
+                </div>
+
+                <div class="col-md-6 d-flex align-items-center justify-content-center">
+                  <img src="<?= base_url('/public/images/logoku.jpg') ?>" alt="Illustration" style="max-height: 300px;">
+                </div>
+
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container-fluid h-custom">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="favicon.ico"
-            class="img-fluid" alt="Sample image">
-        </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <form>
-            <h1> SELAMAT DATANG </h1>
-                <div class="divider d-flex align-items-center my-4">
-                </div>
-                <div data-mdb-input-init class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3">Alamat Email</label>
-                    <input type="email" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="Masukan email" />
-                </div>
-
-                <div data-mdb-input-init class="form-outline mb-3">
-                    <label class="form-label" for="form3Example4">Kata Sandi</label>
-                    <input type="password" id="form3Example4" class="form-control form-control-lg"
-                    placeholder="Masukan Kata Sandi" />
-                </div>
-
-                <div class="text-center text-lg-start mt-4 pt-2">
-                    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Masuk</button>
-                    <p class="small fw-bold mt-2 pt-1 mb-0">Belum Memiliki Akun? <a href="#!"
-                        class="link-link">Daftar</a></p>
-                </div>
-
-            </form>
-        </div>
-        </div>
-    </div>
-    <div
-    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-success">
-   </div>
-</section>
+  </section>
 </body>
 </html>
