@@ -6,6 +6,6 @@ class Pages extends BaseController
 {
     public function index()
     {
-        return view('layouts\header.php');
+        return view('layouts\footer.php');
     }
 }

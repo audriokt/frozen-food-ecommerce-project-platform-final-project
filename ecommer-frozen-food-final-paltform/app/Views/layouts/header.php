@@ -79,8 +79,8 @@
                         </span>
                     </button>
                 </div>
-                <div class="dropdown text-endx p-3">
-                    <a href="">
+                <div class="dropdown">
+                    <a href="" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#009B4D" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
@@ -88,7 +88,10 @@
                     </a>
                     <ul class="dropdown-menu text-small show">
                         <li>
-                            <a href="" class="dropdown-item"></a>
+                            <a href="" class="dropdown-item">Anjaya</a>
+                        </li>
+                        <li>
+                            <a href="" class="dropdown-item">anjayai</a>
                         </li>
                     </ul>
                 </div>
@@ -97,7 +100,3 @@
     </nav>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-</body>
-
-</html>
