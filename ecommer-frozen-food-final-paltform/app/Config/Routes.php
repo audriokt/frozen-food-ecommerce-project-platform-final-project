@@ -13,3 +13,5 @@ $routes->post('/login', 'AuthController::processLogin');
 
 $routes->get('/register', 'AuthController::register');
 $routes->post('/register', 'AuthController::saveRegister');
+
+$routes->get('/LandingPage', 'Pages::index');
