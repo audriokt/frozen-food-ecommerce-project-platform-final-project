@@ -10,18 +10,18 @@ class AuthController extends BaseController
 
     public function __construct()
     {
-        $this->customerModel = new CustomerModel();
+        $this->customerModel = model('CustomerModel');
     }
 
     public function login()
     {
-        if ($this->request->getServer() === 'post') {
+        if ($this->request->getPost()) {
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            $customer = $this->customerModel->where('email', $email)->first();
+            $customer = $this->customerModel->where('Email', $email)->first();
 
-            if ($customer && password_verify($password, $customer['password'])) {
+            if ($customer && password_verify($password, $customer['Password'])) {
                 // Set session data
                 session()->set('customer_id', $customer['id']);
                 session()->set('logged_in', true);
@@ -37,8 +37,16 @@ class AuthController extends BaseController
 
     public function register()
     {
-        if ($this->request->getServer() === 'post') {
+        if ($this->request->getPost()) {
+            $id = $this->customerModel->from('customer')->countAllResults();
+            if ($id > 0) {
+                $id = "cust-" . ($id + 1); // Increment ID for new customer
+            } else {
+                $id = "cust-1"; // Start from 1 if no records exist
+            }
+
             $data = [
+                'id' => $id,
                 'name' => $this->request->getPost('name'),
                 'email' => $this->request->getPost('email'),
                 'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
@@ -59,6 +67,6 @@ class AuthController extends BaseController
     {
         session()->remove(['customer_id', 'logged_in']);
         session()->setFlashdata('success', 'You have been logged out successfully.');
-        return redirect()->to('/auth/login');
+        return redirect()->to('/Customer/Login_Page');
     }
 }
