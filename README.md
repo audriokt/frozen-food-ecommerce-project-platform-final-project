@@ -31,4 +31,4 @@ This project is a collaborative effort to build a modern and efficient e-commerc
 ### Login Page
 ![Screenshot 2025-06-08 152011](https://github.com/user-attachments/assets/14a9a383-76bb-4102-a804-f81e4c4a2847)
 ### Register Page
-
+![Screenshot 2025-06-08 152938](https://github.com/user-attachments/assets/cb24fed4-7cf5-4d66-8438-ea55b18115a0)
