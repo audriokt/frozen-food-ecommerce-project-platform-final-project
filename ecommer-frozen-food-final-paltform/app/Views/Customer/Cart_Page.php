@@ -1,9 +1,7 @@
 <?= $this->extend('layouts/template') ?>
 <?= $this->section('content') ?>
-<<<<<<< HEAD
-    <h1>Cart Page</h1>
-<?= $this->endSection() ?>git
-=======
+<h1>Cart Page</h1>
+    <?= $this->endSection() ?>git
 
 <style>
     .main-content {
@@ -102,4 +100,3 @@ document.getElementById('selectAll')?.addEventListener('change', function () {
 </script>
 
 <?= $this->endSection() ?>
->>>>>>> f50db6ac603078b88f89692c0c8351d91d085730
