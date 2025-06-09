@@ -8,9 +8,4 @@ class Pages extends BaseController
     {
     return view('Customer/Landing_Page_Cus');
     }
-
-    public function index2()
-    {
-        return view('Customer/Cart_Page');
-    }
 }
