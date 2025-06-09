@@ -25,10 +25,10 @@
                                 <div class="col-md-6">
                                     <h2 class="fw-bold text-center mb-5" style="font-family: Outfit;">DAFTAR</h2>
 
-                                    <form action="/register" method="post">
+                                    <form action="" method="post">
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                            <input type="text" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap" required />
+                                            <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" required />
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">

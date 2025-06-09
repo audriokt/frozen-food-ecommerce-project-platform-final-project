@@ -19,14 +19,14 @@ class AuthController extends BaseController
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            $customer = $this->customerModel->where('Email', $email)->first();
+            $customer = $this->customerModel->where('email', $email)->first();
 
             if ($customer && password_verify($password, $customer['Password'])) {
                 // Set session data
-                session()->set('customer_id', $customer['id']);
+                session()->set('User_id', $customer['User_ID']);
                 session()->set('logged_in', true);
 
-                return redirect()->to('/customer/dashboard');
+                return redirect()->to('/LandingPage`');
             } else {
                 session()->setFlashdata('error', 'Invalid email or password.');
             }
@@ -37,8 +37,9 @@ class AuthController extends BaseController
 
     public function register()
     {
-        if ($this->request->getPost()) {
-            $id = $this->customerModel->from('customer')->countAllResults();
+        if ($this->request->getMethod() === 'post') {
+ 
+            $id = $this->customerModel->countAllResults();
             if ($id > 0) {
                 $id = "cust-" . ($id + 1); // Increment ID for new customer
             } else {
@@ -46,15 +47,16 @@ class AuthController extends BaseController
             }
 
             $data = [
-                'id' => $id,
-                'name' => $this->request->getPost('name'),
-                'email' => $this->request->getPost('email'),
-                'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                'User_ID' => $id,
+                'Name' => $this->request->getPost('name'),
+                'Email' => $this->request->getPost('email'),
+                'Password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             ];
+            $this->customerModel->insert($data);
 
             if ($this->customerModel->insert($data)) {
                 session()->setFlashdata('success', 'Registration successful. You can now log in.');
-                return redirect()->to('/auth/login');
+                return redirect()->to('Customer/Login_Page');
             } else {
                 session()->setFlashdata('error', 'Registration failed. Please try again.');
             }
