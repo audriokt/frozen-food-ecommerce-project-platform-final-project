@@ -11,12 +11,11 @@ class AuthController extends BaseController
     public function __construct()
     {
         $this->customerModel = model(CustomerModel::class);
-        helper(['form', 'url', 'session']); // load helper yang diperlukan
+        helper(['form', 'url', 'session']); 
     }
 
     public function login()
     {
-        // Cek jika sudah login, langsung redirect ke landing page
         if (session()->get('logged_in')) {
             return redirect()->to('/LandingPage');
         }
@@ -88,11 +87,12 @@ class AuthController extends BaseController
                 'Password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             ];
 
-            if ($this->customerModel->insert($data)) {
-                session()->setFlashdata('success', 'Registrasi berhasil. Silakan login.');
-                return redirect()->to('/login');
-            } else {
-                session()->setFlashdata('error', 'Registrasi gagal. Coba lagi.');
+            try {
+                $this->customerModel->insert($data);
+                session()->setFlashdata('success', 'Registrasi berhasil! Silakan login.');
+                return view('Customer/Login_Page');
+            } catch (\Exception $e) {
+                session()->setFlashdata('error', 'Registrasi gagal: '.$e->getMessage());
                 return redirect()->to('/register')->withInput();
             }
         }
