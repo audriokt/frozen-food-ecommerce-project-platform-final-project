@@ -16,3 +16,5 @@ $routes->get('/register', 'AuthController::register');
 $routes->post('/register', 'AuthController::saveRegister');
 
 $routes->get('/LandingPage', 'Pages::index');
+
+$routes->get('/Cart_Page','Pages::index2');

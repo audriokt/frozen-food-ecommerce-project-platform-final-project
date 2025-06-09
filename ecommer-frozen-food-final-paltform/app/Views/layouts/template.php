@@ -9,6 +9,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
         <title>Snowe</title>
+        <style>
+            .form-check-input:checked {
+                background-color: #009B4D !important;
+                border-color: #009B4D !important;
+            }
+        </style>
     </head>
 
     <body class="d-flex flex-column min-vh-100">
@@ -35,23 +41,23 @@
                 </div>
             </nav>
 
-        <?=$this->include('layouts/navbar'); ?>
+            <?= $this->include('layouts/navbar'); ?>
 
-        <main class="flex-grow-1">
+            <main class="flex-grow-1">
 
-            <?= $this->renderSection('content'); ?>
+                <?= $this->renderSection('content'); ?>
 
-        </main>
-        <!-- Footer -->
-        <div class="container-fluid" style="background-color: #009B4D;">
-            <footer class="text-center py-3 text-white" style="font-family: Outfit, sans-serif; height: 500px;">
-                <h5>Ingpo</h5>
-                <ul>
-                    <li class="nav flex-column">Hubungi Kami</li>
-                </ul>
-            </footer>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+            </main>
+            <!-- Footer -->
+            <div class="container-fluid" style="background-color: #009B4D;">
+                <footer class="text-center py-3 text-white" style="font-family: Outfit, sans-serif; height: 500px;">
+                    <h5>Ingpo</h5>
+                    <ul>
+                        <li class="nav flex-column">Hubungi Kami</li>
+                    </ul>
+                </footer>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
     </body>
 
