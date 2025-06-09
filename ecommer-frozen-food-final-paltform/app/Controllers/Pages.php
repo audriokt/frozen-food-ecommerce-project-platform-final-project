@@ -6,6 +6,6 @@ class Pages extends BaseController
 {
     public function index()
     {
-        return view('layouts\template');
+        return view('Customer/Landing_Page_Cus');
     }
 }

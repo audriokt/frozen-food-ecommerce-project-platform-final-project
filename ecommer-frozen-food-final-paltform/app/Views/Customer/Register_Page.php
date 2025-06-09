@@ -53,7 +53,7 @@
 
                                 <div class="col-md-6 d-flex align-items-center justify-content-center">
                                     <img src="<?php
-                                                echo base_url('logoku.jpg');  // Adjust the path as necessary
+                                                echo base_url('logoku.jpg');
                                                 ?>" alt="Snowe" style="max-height: 300px;">
                                 </div>
                             </div>

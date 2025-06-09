@@ -21,7 +21,7 @@
               <div class="row">
 
                 <div class="col-md-6">
-                  <h2 class="fw-bold text-center mb-5">MASUK</h2>
+                  <h2 class="fw-bold text-center mb-5" style="font-family: Outfit;">MASUK</h2>
 
                   <form action="/login" method="post">
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center mb-4">
-                      <button type="submit" class="btn btn-success btn-lg">Masuk</button>
+                      <button type="submit" class="btn btn-success btn-lg" style="font-family: Outfit;">Masuk</button>
                     </div>
 
                     <p class="text-center">Belum punya akun?
@@ -46,7 +46,7 @@
 
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
                   <img src="<?php
-                            echo base_url('logoku.jpg');  // Adjust the path as necessary
+                            echo base_url('logoku.jpg');
                             ?>" alt="Snowe" style="max-height: 300px;">
                 </div>
 
