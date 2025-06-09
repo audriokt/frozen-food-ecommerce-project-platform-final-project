@@ -10,9 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
     <title>Halaman Register</title>
-
 </head>
-
 <body style="background-color: #ffffff;">
     <section class="vh-100">
         <div class="container py-5 h-100">
@@ -25,26 +23,49 @@
                                 <div class="col-md-6">
                                     <h2 class="fw-bold text-center mb-5" style="font-family: Outfit;">DAFTAR</h2>
 
+                                    <!-- Tampilkan flashdata error jika ada -->
+                                    <?php if (session()->getFlashdata('error')) : ?>
+                                        <div class="alert alert-danger">
+                                            <?= session()->getFlashdata('error') ?>
+                                        </div>
+                                    <?php endif; ?>
+
                                     <form action="" method="post">
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                            <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" required />
+                                        <?= csrf_field() ?> <!-- Wajib agar tidak Unauthorized -->
+
+                                        <!-- Nama Lengkap -->
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Nama Lengkap</label>
+                                            <input type="text" name="name" id="name" class="form-control" value="<?= old('name') ?>" required>
+                                            <?php if (isset($validation) && $validation->hasError('name')): ?>
+                                                <small class="text-danger"><?= $validation->getError('name') ?></small>
+                                            <?php endif; ?>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <input type="email" name="email" class="form-control" placeholder="Email" required />
+                                        <!-- Email -->
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" name="email" id="email" class="form-control" value="<?= old('email') ?>" required>
+                                            <?php if (isset($validation) && $validation->hasError('email')): ?>
+                                                <small class="text-danger"><?= $validation->getError('email') ?></small>
+                                            <?php endif; ?>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <input type="password" name="password" class="form-control" placeholder="Kata Sandi" required />
+                                        <!-- Password -->
+                                        <div class="mb-4">
+                                            <label for="password" class="form-label">Kata Sandi</label>
+                                            <input type="password" name="password" id="password" class="form-control" required>
+                                            <?php if (isset($validation) && $validation->hasError('password')): ?>
+                                                <small class="text-danger"><?= $validation->getError('password') ?></small>
+                                            <?php endif; ?>
                                         </div>
 
+                                        <!-- Tombol Daftar -->
                                         <div class="d-flex justify-content-center mb-4">
                                             <button type="submit" class="btn btn-success btn-lg" style="font-family: Outfit;">Daftar</button>
                                         </div>
 
+                                        <!-- Link ke login -->
                                         <p class="text-center">Sudah punya akun?
                                             <a href="/login" class="fw-bold text-decoration-none">Masuk</a>
                                         </p>
@@ -52,9 +73,7 @@
                                 </div>
 
                                 <div class="col-md-6 d-flex align-items-center justify-content-center">
-                                    <img src="<?php
-                                                echo base_url('logoku.jpg');
-                                                ?>" alt="Snowe" style="max-height: 300px;">
+                                    <img src="<?= base_url('logoku.jpg') ?>" alt="Logo" style="max-height: 300px;">
                                 </div>
                             </div>
                         </div>
@@ -63,6 +82,5 @@
             </div>
         </div>
     </section>
-
 </body>
 </html>

@@ -10,25 +10,35 @@ class AuthController extends BaseController
 
     public function __construct()
     {
-        $this->customerModel = model('CustomerModel');
+        $this->customerModel = model(CustomerModel::class);
+        helper(['form', 'url', 'session']); // load helper yang diperlukan
     }
 
     public function login()
     {
-        if ($this->request->getPost()) {
+        // Cek jika sudah login, langsung redirect ke landing page
+        if (session()->get('logged_in')) {
+            return redirect()->to('/LandingPage');
+        }
+
+        if ($this->request->getMethod() === 'post') {
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            $customer = $this->customerModel->where('email', $email)->first();
+            $customer = $this->customerModel->where('Email', $email)->first();
 
             if ($customer && password_verify($password, $customer['Password'])) {
                 // Set session data
-                session()->set('User_id', $customer['User_ID']);
-                session()->set('logged_in', true);
+                session()->set([
+                    'User_ID' => $customer['User_ID'],
+                    'logged_in' => true,
+                    'Name' => $customer['Name']
+                ]);
 
-                return redirect()->to('/LandingPage`');
+                return redirect()->to('/LandingPage');
             } else {
-                session()->setFlashdata('error', 'Invalid email or password.');
+                session()->setFlashdata('error', 'Email atau password salah.');
+                return redirect()->to('/login')->withInput();
             }
         }
 
@@ -38,13 +48,38 @@ class AuthController extends BaseController
     public function register()
     {
         if ($this->request->getMethod() === 'post') {
- 
-            $id = $this->customerModel->countAllResults();
-            if ($id > 0) {
-                $id = "cust-" . ($id + 1); // Increment ID for new customer
-            } else {
-                $id = "cust-1"; // Start from 1 if no records exist
+            $validationRules = [
+                'name' => 'required|min_length[3]|max_length[50]',
+                'email' => 'required|valid_email|is_unique[customer.Email]',
+                'password' => 'required|min_length[6]',
+            ];
+
+            $validationMessages = [
+                'name' => [
+                    'required' => 'Nama harus diisi.',
+                    'min_length' => 'Nama minimal 3 karakter.',
+                    'max_length' => 'Nama maksimal 50 karakter.'
+                ],
+                'email' => [
+                    'required' => 'Email harus diisi.',
+                    'valid_email' => 'Format email tidak valid.',
+                    'is_unique' => 'Email sudah terdaftar.'
+                ],
+                'password' => [
+                    'required' => 'Kata sandi harus diisi.',
+                    'min_length' => 'Kata sandi minimal 6 karakter.'
+                ]
+            ];
+
+            if (!$this->validate($validationRules, $validationMessages)) {
+                return view('Customer/Register_Page', [
+                    'validation' => $this->validator,
+                    'old' => $this->request->getPost()
+                ]);
             }
+
+            $count = $this->customerModel->countAllResults(false); 
+            $id = "cust-" . ($count + 1);
 
             $data = [
                 'User_ID' => $id,
@@ -52,13 +87,13 @@ class AuthController extends BaseController
                 'Email' => $this->request->getPost('email'),
                 'Password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             ];
-            $this->customerModel->insert($data);
 
             if ($this->customerModel->insert($data)) {
-                session()->setFlashdata('success', 'Registration successful. You can now log in.');
-                return redirect()->to('Customer/Login_Page');
+                session()->setFlashdata('success', 'Registrasi berhasil. Silakan login.');
+                return redirect()->to('/login');
             } else {
-                session()->setFlashdata('error', 'Registration failed. Please try again.');
+                session()->setFlashdata('error', 'Registrasi gagal. Coba lagi.');
+                return redirect()->to('/register')->withInput();
             }
         }
 
@@ -67,8 +102,8 @@ class AuthController extends BaseController
 
     public function logout()
     {
-        session()->remove(['customer_id', 'logged_in']);
-        session()->setFlashdata('success', 'You have been logged out successfully.');
-        return redirect()->to('/Customer/Login_Page');
+        session()->destroy();
+        session()->setFlashdata('success', 'Anda berhasil logout.');
+        return redirect()->to('/login');
     }
 }
