@@ -35,7 +35,7 @@ and go to directory
    ```bash
    php spark serve
    
-## Tampilan
+## Interface
 ### Login Page
 ![Screenshot 2025-06-08 152011](https://github.com/user-attachments/assets/14a9a383-76bb-4102-a804-f81e4c4a2847)
 ### Register Page
