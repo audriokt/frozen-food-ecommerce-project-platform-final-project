@@ -10,9 +10,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'AuthController::login');
 
 $routes->get('/login', 'AuthController::login');
-$routes->post('/login', 'AuthController::processLogin');
+$routes->post('/login', 'AuthController::login');
 
 $routes->get('/register', 'AuthController::register');
-$routes->post('/register', 'AuthController::saveRegister');
+$routes->post('/register', 'AuthController::register');
 
 $routes->get('/LandingPage', 'Pages::index');
