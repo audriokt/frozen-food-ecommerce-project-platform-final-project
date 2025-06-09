@@ -1,16 +1,18 @@
- 
+
 <?php
 
 use CodeIgniter\Router\RouteCollection;
 
 /**
- * @var RouteCollection 
+ * @var RouteCollection $routes
  */
-$routes->get('/', 'Pages::index');
+//$routes->get('/', 'Pages::index');
+$routes->get('/', 'AuthController::login');
 
-// User Routes
-$routes->get('/register', 'User::register');
-$routes->post('/register/save', 'User::saveRegister');    
-$routes->get('/login', 'User::login');
-$routes->post('/login', 'User::processLogin');
-$routes->get('/logout', 'User::logout');
+$routes->get('/login', 'AuthController::login');
+$routes->post('/login', 'AuthController::processLogin');
+
+$routes->get('/register', 'AuthController::register');
+$routes->post('/register', 'AuthController::saveRegister');
+
+$routes->get('/LandingPage', 'Pages::index');
