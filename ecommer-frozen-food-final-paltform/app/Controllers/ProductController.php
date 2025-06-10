@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ProductModel;
-use CodeIgniter\Models\Category;
+use App\Models\Category;
 
 class ProductController extends BaseController
 {
@@ -38,7 +38,7 @@ class ProductController extends BaseController
     {
         $data = [
             'products' => $this->productModel->where('c_id', $category)->findAll(),
-            'category' => $this->categoryModel->where('c_id', $category)->first()['name'] ?? 'Kategori Tidak Ditemukan'
+            'category' => $this->categoryModel->where('c_id', $category)->first()['name'] ?? 'Kategori tidak ada'
         ];
         return view('Customer/Category_Base', $data);
     }

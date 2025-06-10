@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeIgniter\Models;
+namespace App\Models;
 
 class Category extends \CodeIgniter\Model
 {
