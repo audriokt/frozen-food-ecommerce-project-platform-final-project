@@ -13,7 +13,7 @@
                                     Kategori
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Makan</a></li>
+                                    <li><a class="dropdown-item" href="#">Makanan</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>

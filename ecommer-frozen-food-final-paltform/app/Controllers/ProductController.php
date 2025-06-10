@@ -2,12 +2,22 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductModel;
+
 class ProductController extends BaseController
 {
-    public function index()
+    protected $productModel;
+    public function __construct()
     {
-        // Logic to retrieve and display products
-        return view('products/index');
+        $this->productModel = model(ProductModel::class);
+    }
+
+    public function showAll()
+    {
+        $data = [
+            'products' => $this->productModel->findAll()
+        ];
+        return view('Customer/Landing_Page_Cus', $data);
     }
 
     public function show($id)

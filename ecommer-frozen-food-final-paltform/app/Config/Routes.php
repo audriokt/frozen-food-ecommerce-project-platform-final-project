@@ -15,4 +15,4 @@ $routes->post('/login', 'AuthController::login');
 $routes->get('/register', 'AuthController::register');
 $routes->post('/register', 'AuthController::register');
 
-$routes->get('/LandingPage', 'Pages::index');
+$routes->get('/LandingPage', 'ProductController::showAll');
