@@ -30,4 +30,13 @@ class ProductController extends BaseController
     {
         return view('layouts/product_card');
     }
+
+    public function showCategory($category)
+    {
+        $data = [
+            'products' => $this->productModel->where('Category', $category)->findAll(),
+            'category' => $category
+        ];
+        return view('Customer/Category_Base', $data);
+    }
 }

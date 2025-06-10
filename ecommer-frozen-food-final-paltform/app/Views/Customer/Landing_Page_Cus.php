@@ -2,9 +2,11 @@
 
 <?= $this->section('content') ?>
 <div class="container" style="margin-top: 130px;">
-
+    <?php
+    echo "<h3 style='font-family:Outfit;'> Selamat Datang " . session()->get('Name'). "</h3>";
+    ?>
     <!-- Coraousel -->
-    <div class="container my-4">
+    <div class="container my-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -34,7 +36,7 @@
     </div>
 
     <!-- kategori -->
-    <div class="container my-4">
+    <div class="container my-5">
         <h5 style="font-family: Outfit;">Kategori</h5>
         <table class="table table-borderless table-sm"">
             <tbody>
@@ -63,7 +65,7 @@
     </div>
 
     <!-- gambar produk -->
-    <div class="container my-4">
+    <div class="container my-5">
         <h5 style="font-family: Outfit;"> Semua Produk</h5>
         <div class="row g-3">
             <?php foreach ($products as $product) : ?>
@@ -73,8 +75,8 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
                             <div class="mt-auto">
-                                <a href="#" class="btn btn-success m-1">Beli</a>
-                                <a href="#" class="btn btn-secondary m-1">Keranjang</a>
+                                <a href="#" class="btn m-1 float-end" style="background-color: #009D4B; color:white;">Beli</a>
+                                <a href="#" class="btn m-1 float-end" style="background-color:rgb(221, 221, 221); color:black;">Keranjang</a>
                             </div>
                         </div>
                     </div>

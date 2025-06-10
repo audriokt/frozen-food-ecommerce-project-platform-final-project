@@ -16,4 +16,4 @@ $routes->get('/register', 'AuthController::register');
 $routes->post('/register', 'AuthController::register');
 
 $routes->get('/LandingPage', 'ProductController::showAll');
-$routes->get('/card', 'ProductController::showCard');
+$routes->get('/LandingPage/(:any)', 'ProductController::showCategory/$1');

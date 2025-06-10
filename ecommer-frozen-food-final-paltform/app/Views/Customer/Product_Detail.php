@@ -1,8 +1,8 @@
-<?= $this->extend('layouts/template') ?> 
+<?= $this->extend('layouts/template') ?>
 
 <?= $this->section('content') ?>
-    <!-- Product Details Section -->
-   <div class="container product-container" style="margin-top:150px; margin-bottom:100px; display: flex; gap: 30px;">
+<!-- Product Details Section -->
+<div class="container product-container" style="margin-top:150px; margin-bottom:100px; display: flex; gap: 30px;">
     <div class="product-image" style="flex: 1;">
         <img src="<?= base_url('images/ayam_utuh.jpg') ?>" alt="Ayam Utuh" style="width:500%; max-width:500px; height:auto;">
     </div>
@@ -30,7 +30,7 @@
             </tbody>
         </table>
         <div class="buttons" style="margin-top: 15px;">
-            <button class="add-to-cart btn btn-success float-end" style="background-color: #009B4D";">Tambah ke keranjang</button>
+            <button class="add-to-cart btn btn-success float-end" style="background-color: #009B4D" ;">Tambah ke keranjang</button>
         </div>
     </div>
 </div>

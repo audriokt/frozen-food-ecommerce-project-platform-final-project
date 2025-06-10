@@ -13,15 +13,15 @@
                                     Kategori
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Makanan</a></li>
+                                    <li><a class="dropdown-item" href="/LandingPage/cate-1">Makanan</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Sayuran & Buah</a></li>
+                                    <li><a class="dropdown-item" href="/LandingPage/cate-3">Sayuran & Buah</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Ayam, Daging & Ikan</a></li>
+                                    <li><a class="dropdown-item" href="/LandingPage/cate-2">Ayam, Daging & Ikan</a></li>
                                 </ul>
                             </li>
                         </ul>

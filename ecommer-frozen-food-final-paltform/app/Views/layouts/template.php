@@ -49,7 +49,7 @@
 
             </main>
             <!-- Footer -->
-            <div class="container-fluid" style="background-color: #009B4D;">
+            <div class="container-fluid mt-4" style="background-color: #009B4D;">
                 <footer class="text-center py-3 text-white" style="font-family: Outfit, sans-serif; height: 500px;">
                     <h5>Ingpo</h5>
                     <ul>
