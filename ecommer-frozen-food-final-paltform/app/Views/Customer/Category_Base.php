@@ -1,8 +1,7 @@
 <?= $this->extend('layouts/template') ?>
 <?= $this->section('content') ?>
-<h3><?= $category ?></h3>
 <div class="container my-5">
-    <h5 style="font-family: Outfit;"> Semua Produk</h5>
+    <h5 style="font-family: Outfit;"><?= $category ?></h5>
     <div class="row g-3">
         <?php foreach ($products as $product) : ?>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
