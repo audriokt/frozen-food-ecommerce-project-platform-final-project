@@ -3,13 +3,16 @@
 namespace App\Controllers;
 
 use App\Models\ProductModel;
+use CodeIgniter\Models\Category;
 
 class ProductController extends BaseController
 {
+    protected $categoryModel;
     protected $productModel;
     public function __construct()
     {
         $this->productModel = model(ProductModel::class);
+        $this->categoryModel = model(Category::class);
     }
 
     public function showAll()
@@ -35,7 +38,7 @@ class ProductController extends BaseController
     {
         $data = [
             'products' => $this->productModel->where('c_id', $category)->findAll(),
-            'category' => $category
+            'category' => $this->categoryModel->where('c_id', $category)->first()['name'] ?? 'Kategori Tidak Ditemukan'
         ];
         return view('Customer/Category_Base', $data);
     }

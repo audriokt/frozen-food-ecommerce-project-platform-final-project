@@ -1,6 +1,6 @@
 <?= $this->extend('layouts/template') ?>
 <?= $this->section('content') ?>
-<div class="container my-5">
+<div class="container my-5" style="margin-top: 130px;">
     <h5 style="font-family: Outfit;"><?= $category ?></h5>
     <div class="row g-3">
         <?php foreach ($products as $product) : ?>
