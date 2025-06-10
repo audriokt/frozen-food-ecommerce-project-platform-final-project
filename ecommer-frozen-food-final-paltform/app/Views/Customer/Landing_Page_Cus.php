@@ -2,9 +2,9 @@
 
 <?= $this->section('content') ?>
 <div class="container" style="margin-top: 130px;">
-    <h3>Beranda</h3>
+
     <!-- Coraousel -->
-    <div class="container my-5">
+    <div class="container my-4">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -32,45 +32,54 @@
             </button>
         </div>
     </div>
+
     <!-- kategori -->
-    <div class="container my-5">
+    <div class="container my-4">
         <h5 style="font-family: Outfit;">Kategori</h5>
         <table class="table table-borderless table-sm"">
             <tbody>
                 <tr>
-                    <td><a href="<?= base_url('images/candies.png') ?>"><img src="<?= base_url('images/cat_candies.png') ?>" alt="Makanan" width="150px"></a></td>
-                    <td><a href="<?= base_url('images/cat_barbecue.png') ?>"><img src="<?= base_url('images/cat_barbecue.png') ?>" alt="Sayuran" width="150px"></a></td>
-                    <td><a href="<?= base_url('images/cat_vegetable.png') ?>"><img src="<?= base_url('images/cat_vegetable.png') ?>" alt="Ayam, Daging & Ikan" width="150px"></a></td>
-                </tr>
+                    <td class=" text-center">
+            <a href="<?= base_url('images/candies.png') ?>" class="nav-link" style="background-color:rgb(255, 243, 164); border-radius: 20px;">
+                <img src="<?= base_url('images/cat_candies.png') ?>" alt="Makanan" width="150px"><br>
+                <label for="cat_makanan" style="font-family: Outfit;">Makanan</label>
+            </a>
+            </td>
+            <td class="text-center">
+                <a href="<?= base_url('images/cat_barbecue.png') ?>" class="nav-link" style="background-color:rgb(255, 169, 164); border-radius: 20px;">
+                    <img src="<?= base_url('images/cat_barbecue.png') ?>" alt="Sayuran" width="150px"><br>
+                    <label for="cat_daging" style="font-family: Outfit;">Daging</label>
+                </a>
+            </td>
+            <td class="text-center">
+                <a href="<?= base_url('images/cat_vegetable.png') ?>" class="nav-link" style="background-color:rgb(234, 255, 164); border-radius: 20px;">
+                    <img src="<?= base_url('images/cat_vegetable.png') ?>" alt="Ayam, Daging & Ikan" width="150px"><br>
+                    <label for="cat_sayurbuah" style="font-family: Outfit;">Sayur & Buah</label>
+                </a>
+            </td>
+            </tr>
             </tbody>
         </table>
-    </div>
-
-    <!-- produk diskon -->
-    <div class="container my-5">
-        <h5 style="font-family:Outfit;">Produk Diskon</h5>
-
     </div>
 
     <!-- gambar produk -->
-    <div class="container" style="margin-top: 20px;">
-        <table class="table table-hover">
-            <tbody>
-                <?php
-                if (isset($products) && is_array($products)) {
-                    foreach ($products as $product) {
-                        echo "<tr>";
-                        echo "<td> <img src='" . base_url($product['path']) . "' alt='" . $product['name'] . "' width='250px'></td>";
-                        echo "<td style='text-align: left;'><h3>{$product['name']}</h3></td>";
-                        echo "<td>{$product['price']}</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='3'>No products available</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+    <div class="container my-4">
+        <h5 style="font-family: Outfit;"> Semua Produk</h5>
+        <div class="row g-3">
+            <?php foreach ($products as $product) : ?>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="card h-100">
+                        <img src="<?= base_url($product['path']) ?>" class="card-img-top" alt="<?= htmlspecialchars($product['name']) ?>">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
+                            <div class="mt-auto">
+                                <a href="#" class="btn btn-success m-1">Beli</a>
+                                <a href="#" class="btn btn-secondary m-1">Keranjang</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
-<?= $this->endSection() ?>
+    <?= $this->endSection() ?>

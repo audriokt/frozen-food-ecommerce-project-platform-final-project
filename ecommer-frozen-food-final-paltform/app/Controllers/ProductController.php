@@ -25,4 +25,9 @@ class ProductController extends BaseController
         // Logic to retrieve a single product by ID
         return view('products/show', ['id' => $id]);
     }
+
+    public function showCard()
+    {
+        return view('layouts/product_card');
+    }
 }
