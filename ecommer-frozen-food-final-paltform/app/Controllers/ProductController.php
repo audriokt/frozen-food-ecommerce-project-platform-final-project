@@ -34,7 +34,7 @@ class ProductController extends BaseController
     public function showCategory($category)
     {
         $data = [
-            'products' => $this->productModel->where('Category', $category)->findAll(),
+            'products' => $this->productModel->where('c_id', $category)->findAll(),
             'category' => $category
         ];
         return view('Customer/Category_Base', $data);
