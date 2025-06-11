@@ -1,4 +1,4 @@
-# E-Commerce Frozen Food 🛒❄️
+# E-Commerce Frozen Food-Snowé 🛒❄️
 
 ## About the Project
 This project is an **E-Commerce** platform that sells various types of **Frozen Food** with an elegant interface and efficient management system. The application is developed using **CodeIgniter 4**, **Bootstrap**, and **MySQL**, ensuring fast performance, responsiveness, and secure transactions.
@@ -32,3 +32,7 @@ This project is a collaborative effort to build a modern and efficient e-commerc
 ![Screenshot 2025-06-08 152011](https://github.com/user-attachments/assets/14a9a383-76bb-4102-a804-f81e4c4a2847)
 ### Register Page
 ![Screenshot 2025-06-08 152938](https://github.com/user-attachments/assets/cb24fed4-7cf5-4d66-8438-ea55b18115a0)
+### Landing Page
+![Screenshot 2025-06-11 155352](https://github.com/user-attachments/assets/af3d3899-9c62-4d8e-835b-7878f54eb08e)
+
+
