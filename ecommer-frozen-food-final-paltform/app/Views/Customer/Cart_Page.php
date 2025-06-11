@@ -6,17 +6,11 @@
         padding-top: 120px;
     }
 </style>
-
-    <!-- Tombol kembali -->
-    <h3 class="mb-4 d-flex align-items-center" style="color: #009B4D;">
-    <a href="<?= previous_url() ?>" class="me-3 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">
-        &larr;
-    </a>
     
 <div class="container main-content">
     <h3 class="d-flex align-items-center" style="color: #009B4D;">
-    <a href="<?= previous_url() ?>" class="me-3 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">&larr;</a>
-</h3>
+        <a href="<?= previous_url() ?>" class="me-3 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">&larr;</a>
+    </h3>
     <h4 class="fw-semibold mb-4" style="font-family: Outfit;">
         Keranjang Saya (<?= session()->get('Total_Item_Cart') ?? 0 ?>)
     </h4>
@@ -32,7 +26,7 @@
 
                         <!-- Checkbox -->
                         <div class="form-check me-3 mt-2">
-                            <input class="form-check-input" type="checkbox" name="selected[]" value="1">
+                            <input class="form-check-input item-checkbox" type="checkbox" name="selected[]" value="<?= $item['cart_id'] ?>" data-subtotal="<?= $item['subtotal'] ?>">
                         </div>
 
                         <!-- Gambar Produk -->
@@ -73,7 +67,7 @@
                         <label class="form-check-label" for="selectAll">Pilih Semua</label>
                     </div>
                     <span class="text-muted">Total:
-                        <strong class="text-danger">Rp120.000</strong>
+                        <strong class="text-danger" id="total-price">Rp0</strong>
                     </span>
                 </div>
 
@@ -87,23 +81,75 @@
 </div>
 
 <script>
+    function formatRupiah(angka) {
+        return 'Rp' + angka.toLocaleString('id-ID');
+    }
+
+    function updateCheckboxSubtotal(cb) {
+        const card = cb.closest('.card');
+        const priceText = card.querySelector('.text-danger').textContent;
+        const price = parseInt(priceText.replace(/\D/g, '')) || 0;
+        const quantity = parseInt(card.querySelector('input[name^="quantity"]').value) || 1;
+        cb.dataset.subtotal = price * quantity;
+    }
+
+    function updateTotal() {
+        let total = 0;
+        document.querySelectorAll('.item-checkbox:checked').forEach(cb => {
+            total += parseInt(cb.dataset.subtotal) || 0;
+        });
+        document.getElementById('total-price').textContent = formatRupiah(total);
+    }
+
+    // Tombol +
     document.querySelectorAll('.qty-plus').forEach(btn => {
         btn.addEventListener('click', () => {
             const input = btn.previousElementSibling;
             input.value = parseInt(input.value) + 1;
+
+            const card = btn.closest('.card');
+            const checkbox = card.querySelector('.item-checkbox');
+            updateCheckboxSubtotal(checkbox);
+            updateTotal();
         });
     });
 
+    // Tombol -
     document.querySelectorAll('.qty-minus').forEach(btn => {
         btn.addEventListener('click', () => {
             const input = btn.nextElementSibling;
-            if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+
+                const card = btn.closest('.card');
+                const checkbox = card.querySelector('.item-checkbox');
+                updateCheckboxSubtotal(checkbox);
+                updateTotal();
+            }
         });
     });
 
-    document.getElementById('selectAll')?.addEventListener('change', function() {
-        document.querySelectorAll('input[name="selected[]"]').forEach(cb => cb.checked = this.checked);
+    // Checkbox per item
+    document.querySelectorAll('.item-checkbox').forEach(cb => {
+        updateCheckboxSubtotal(cb); // Hitung subtotal awal
+        cb.addEventListener('change', () => {
+            updateCheckboxSubtotal(cb);
+            updateTotal();
+        });
     });
+
+    // Pilih Semua
+    document.getElementById('selectAll')?.addEventListener('change', function () {
+        const allCheckboxes = document.querySelectorAll('.item-checkbox');
+        allCheckboxes.forEach(cb => {
+            cb.checked = this.checked;
+            updateCheckboxSubtotal(cb);
+        });
+        updateTotal();
+    });
+
+    // Jalankan total saat pertama kali
+    updateTotal();
 </script>
 
 <?= $this->endSection() ?>
