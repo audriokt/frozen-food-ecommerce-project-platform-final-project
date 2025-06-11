@@ -29,11 +29,6 @@ class ProductController extends BaseController
         return view('products/show', ['id' => $id]);
     }
 
-    public function showCard()
-    {
-        return view('layouts/product_card');
-    }
-
     public function showCategory($category)
     {
         $data = [

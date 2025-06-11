@@ -71,9 +71,14 @@
             <?php foreach ($products as $product) : ?>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="card h-100">
-                        <img src="<?= base_url($product['path']) ?>" class="card-img-top" alt="<?= htmlspecialchars($product['name']) ?>">
+                        <a class="nav-link" href="/product/<?= $product['p_id'] ?>">
+                            <img src="<?= base_url($product['path']) ?>" class="card-img-top" alt="<?= htmlspecialchars($product['name']) ?>">
+                        </a>
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
+                            <a class="nav-link" href="/product/<?= $product['p_id'] ?>">
+                                <h5 style="font-family: Outfit;" class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
+                            </a>
+                            <h6 class="fw-bold text-danger"><?= $product['price'] ?></h6>
                             <div class="mt-auto">
                                 <a href="#" class="btn m-1 float-end" style="background-color: #009D4B; color:white;">Beli</a>
                                 <a href="/cart/add/<?= $product['p_id'] ?>" class="btn m-1 float-end" style="background-color:rgb(221, 221, 221); color:black;">Keranjang</a>
