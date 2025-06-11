@@ -52,7 +52,7 @@
                         </a>
                         <ul class="dropdown-menu text-small">
                             <li>
-                                <a href="" class="dropdown-item">Profil</a>
+                                <a href="/profile" class="dropdown-item">Profil</a>
                             </li>
                             <li>
                                 <a href="" class="dropdown-item">Pesanan</a>
