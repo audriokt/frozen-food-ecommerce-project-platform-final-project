@@ -1,6 +1,12 @@
 <?= $this->extend('layouts/template') ?>
 <?= $this->section('content') ?>
 <div class="container" style="margin-top: 130px;">
+        <!-- Tombol kembali -->
+    <h3 class="mb-4 d-flex align-items-center" style="color: #009B4D;">
+    <a href="<?= previous_url() ?>" class="me-3 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">
+        &larr;
+    </a>
+    
     <h5 style="font-family: Outfit;"><?= $category?></h5>
     <div class="row g-3">
         <?php foreach ($products as $product) : ?>
