@@ -62,6 +62,8 @@ class CartController extends BaseController
             'p_id' => $productId
         ])->first();
 
+        $count = $this->cartModel->countAllResults(false);
+        $id = "cust-" . ($count + 1);
         if ($existingCart) {
             // Update quantity jika sudah ada
             $newQty = $existingCart['quantity'] + 1;
@@ -72,13 +74,20 @@ class CartController extends BaseController
         } else {
             // Tambahkan baru jika belum ada
             $this->cartModel->insert([
+                'cart_id' => $id,
                 'User_ID' => $userId,
                 'p_id' => $productId,
                 'quantity' => 1,
                 'subtotal' => $product['price']
             ]);
         }
-
+        $cartItems = $this->cartModel->select('cart.*, product.name as product_name, product.price, product.path')
+            ->join('product', 'product.p_id = cart.p_id')
+            ->where('cart.User_ID', $userId)
+            ->findAll();
+        session()->set([
+            'Total_Item_Cart' => count($cartItems),
+        ]);
         session()->setFlashdata('success', 'Produk berhasil ditambahkan ke keranjang');
         return redirect()->to('/cart');
     }

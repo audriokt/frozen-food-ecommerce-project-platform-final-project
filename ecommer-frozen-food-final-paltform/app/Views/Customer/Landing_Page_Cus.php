@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <div class="container" style="margin-top: 130px;">
     <?php
-    echo "<h3 style='font-family:Outfit;'> Selamat Datang " . session()->get('Name'). "</h3>";
+    echo "<h3 style='font-family:Outfit;'> Selamat Datang " . session()->get('Name') . "</h3>";
     ?>
     <!-- Coraousel -->
     <div class="container my-5">
@@ -76,7 +76,7 @@
                             <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
                             <div class="mt-auto">
                                 <a href="#" class="btn m-1 float-end" style="background-color: #009D4B; color:white;">Beli</a>
-                                <a href="#" class="btn m-1 float-end" style="background-color:rgb(221, 221, 221); color:black;">Keranjang</a>
+                                <a href="/cart/add/<?= $product['p_id'] ?>" class="btn m-1 float-end" style="background-color:rgb(221, 221, 221); color:black;">Keranjang</a>
                             </div>
                         </div>
                     </div>

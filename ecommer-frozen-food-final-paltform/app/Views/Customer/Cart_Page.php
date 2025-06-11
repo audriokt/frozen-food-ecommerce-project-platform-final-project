@@ -15,7 +15,8 @@
     <form action="<?= site_url('cart/update') ?>" method="post">
         <?= csrf_field(); ?>
 
-        <!-- Contoh Produk Ayam Utuh -->
+        <!-- Item Keranjang -->
+        
         <div class="card mb-3 shadow-sm">
             <div class="card-body">
                 <div class="d-flex align-items-start">
