@@ -8,8 +8,8 @@
 </style>
 
 <div class="container main-content">
-    <h4 class="fw-semibold mb-4 mt-5">
-        Keranjang Saya (1)
+    <h4 class="fw-semibold mb-4 mt-5" style="font-family: Outfit;">
+        Keranjang Saya (<?= session()->get('Total_Item_Cart') ?? 0 ?>)
     </h4>
 
     <form action="<?= site_url('cart/update') ?>" method="post">

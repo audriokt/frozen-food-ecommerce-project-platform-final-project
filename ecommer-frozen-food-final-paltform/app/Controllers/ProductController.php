@@ -26,7 +26,11 @@ class ProductController extends BaseController
     public function show($id)
     {
         // Logic to retrieve a single product by ID
-        return view('products/show', ['id' => $id]);
+        $product = $this->productModel->find($id);
+        if (!$product) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Product with ID $id not found");
+        }
+        return view('Customer/Product_Detail', ['id' => $id]);
     }
 
     public function showCategory($category)
