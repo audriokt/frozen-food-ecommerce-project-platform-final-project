@@ -84,7 +84,6 @@
     </form>
 </div>
 
-<!-- Script kuantitas & select all -->
 <script>
     document.querySelectorAll('.qty-plus').forEach(btn => {
         btn.addEventListener('click', () => {
