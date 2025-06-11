@@ -3,17 +3,15 @@
 <style>
     .main-content {
         min-height: 70vh;
-        padding-top: 100px;
+        padding-top: 120px;
     }
 </style>
-    <!-- Tombol kembali -->
-    <h3 class="mb-4 d-flex align-items-center" style="color: #009B4D;">
-    <a href="<?= previous_url() ?>" class="me-3 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">
-        &larr;
-    </a>
     
 <div class="container main-content">
-    <h4 class="fw-semibold mb-4 mt-5" style="font-family: Outfit;">
+    <h3 class="d-flex align-items-center" style="color: #009B4D;">
+    <a href="<?= previous_url() ?>" class="me-3 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">&larr;</a>
+</h3>
+    <h4 class="fw-semibold mb-4" style="font-family: Outfit;">
         Keranjang Saya (<?= session()->get('Total_Item_Cart') ?? 0 ?>)
     </h4>
 
