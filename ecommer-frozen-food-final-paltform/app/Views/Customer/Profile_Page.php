@@ -1,16 +1,12 @@
 <?= $this->extend('layouts/template') ?>
 
 <?= $this->section('content') ?>
-<div class="container" style="margin-top: 100px;">
-<div class="container py-5 mt-5">
+<div class="container" style="margin-top: 120px";>
+  <h3 class=" d-flex align-items-center" style="color: #009B4D;">
+  <a href="<?= previous_url() ?>" class="me-1 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">&larr;</a></h3>
+</div>
+<div class="container">
   <div class="row justify-content-center">
-    
-    <!-- Tombol kembali -->
-    <h3 class="mb-4 d-flex align-items-center" style="color: #009B4D;">
-    <a href="<?= previous_url() ?>" class="me-3 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">
-        &larr;
-    </a>
-
     <div class="col-md-4">
       <div class="card text-center p-4">
         <h5 class="mb-3">Foto Profil</h5>
@@ -39,9 +35,8 @@
         </form>
       </div>
     </div>
-
-  </div>
 </div>
+  </div>
 
 <style>
   body {
