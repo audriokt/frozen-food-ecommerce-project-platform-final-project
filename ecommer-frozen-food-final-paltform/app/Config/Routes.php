@@ -24,4 +24,11 @@ $routes->get('/cart', 'CartController::index');
 $routes->get('/cart/add/(:any)', 'CartController::add/$1');
 
 $routes->get('/Checkout_Page', 'Pages::index2');
+<<<<<<< HEAD
 $routes->get('/product/(:any)', 'ProductController::show/$1');
+=======
+$routes->get('/product/(:any)', 'ProductController::show/$1');
+
+$routes->get('/profile', 'AuthController::profile');
+$routes->post('/profile/update', 'AuthController::updateProfile');
+>>>>>>> ce485a7a14219f0247a6e3c4490686b92ef70bf3
