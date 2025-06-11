@@ -11,6 +11,6 @@ class Pages extends BaseController
 
  public function index2()
  {
-   return view('Customer/Orders_Page');
+   return view('Customer/Cart_Page');
  }
 }
