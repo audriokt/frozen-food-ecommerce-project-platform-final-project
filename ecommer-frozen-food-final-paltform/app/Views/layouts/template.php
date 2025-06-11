@@ -23,14 +23,14 @@
             <nav class="border-bottom" style="background-color: #F5F5F5;">
                 <div class="container d-flex justify-content-between">
                     <ul class="nav">
-                        <li class="nav-item pt-2" style="color: #666666;">Selamat Datang di Snowe</li>
+                        <li class="nav-item pt-2" style="color: #666666;">Selamat Datang di Snowé</li>
                     </ul>
                     <ul class="nav">
                         <li class="nav-item"><a class="nav-link link-body-emphasis px-2 active" aria-current="page" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#009B4D" class="bi bi-person" viewBox="0 2 16 16">
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                                 </svg>
-                                Tentang Snowe</a></li>
+                                Tentang Snowé</a></li>
 
                         <li class="nav-item"><a class="nav-link link-body-emphasis px-2 active" aria-current="page" href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#009B4D" class="bi bi-telephone" viewBox="0 1 16 16">
@@ -50,7 +50,7 @@
             </main>
             <!-- Footer -->
             <div class="container-fluid mt-4" style="background-color: #009B4D;">
-                <footer class="text-center py-3 text-white" style="font-family: Outfit, sans-serif; height: 500px;">
+                <footer class="text-center py-3 text-white" style="font-family: Outfit, sans-serif; height: 430px;">
                     <h5>Ingpo</h5>
                     <ul>
                         <li class="nav flex-column">Hubungi Kami</li>

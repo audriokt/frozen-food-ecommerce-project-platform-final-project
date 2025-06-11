@@ -42,19 +42,19 @@
             <tbody>
                 <tr>
                     <td class=" text-center">
-            <a href="<?= base_url('images/candies.png') ?>" class="nav-link" style="background-color:rgb(255, 243, 164); border-radius: 20px;">
+            <a href="/LandingPage/cate-1" class="nav-link" style="background-color:rgb(255, 243, 164); border-radius: 20px;">
                 <img src="<?= base_url('images/cat_candies.png') ?>" alt="Makanan" width="150px"><br>
                 <label for="cat_makanan" style="font-family: Outfit;">Makanan</label>
             </a>
             </td>
             <td class="text-center">
-                <a href="<?= base_url('images/cat_barbecue.png') ?>" class="nav-link" style="background-color:rgb(255, 169, 164); border-radius: 20px;">
+                <a href="/LandingPage/cate-2" class="nav-link" style="background-color:rgb(255, 169, 164); border-radius: 20px;">
                     <img src="<?= base_url('images/cat_barbecue.png') ?>" alt="Sayuran" width="150px"><br>
                     <label for="cat_daging" style="font-family: Outfit;">Daging</label>
                 </a>
             </td>
             <td class="text-center">
-                <a href="<?= base_url('images/cat_vegetable.png') ?>" class="nav-link" style="background-color:rgb(234, 255, 164); border-radius: 20px;">
+                <a href="/LandingPage/cate-3" class="nav-link" style="background-color:rgb(234, 255, 164); border-radius: 20px;">
                     <img src="<?= base_url('images/cat_vegetable.png') ?>" alt="Ayam, Daging & Ikan" width="150px"><br>
                     <label for="cat_sayurbuah" style="font-family: Outfit;">Sayur & Buah</label>
                 </a>
