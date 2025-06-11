@@ -3,15 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\CustomerModel;
+use App\Models\CartModel;
 
 class AuthController extends BaseController
 {
     protected $customerModel;
+    protected $cartModel;
 
     public function __construct()
     {
         $this->customerModel = model(CustomerModel::class);
-        helper(['form', 'url', 'session']); 
+        $this->cartModel = model(CartModel::class);
+        helper(['form', 'url', 'session']);
     }
 
     public function login()
@@ -25,13 +28,18 @@ class AuthController extends BaseController
             $password = $this->request->getPost('password');
 
             $customer = $this->customerModel->where('Email', $email)->first();
+            $cartItems = $this->cartModel->select('cart.*, product.name as product_name, product.price, product.path')
+                ->join('product', 'product.p_id = cart.p_id')
+                ->where('cart.User_ID', $customer['User_ID'])
+                ->findAll();
 
             if ($customer && password_verify($password, $customer['Password'])) {
                 // Set session data
                 session()->set([
                     'User_ID' => $customer['User_ID'],
                     'logged_in' => true,
-                    'Name' => $customer['Name']
+                    'Name' => $customer['Name'],
+                    'Total_Item_Cart' => count($cartItems),
                 ]);
 
                 return redirect()->to('/LandingPage');
@@ -77,7 +85,7 @@ class AuthController extends BaseController
                 ]);
             }
 
-            $count = $this->customerModel->countAllResults(false); 
+            $count = $this->customerModel->countAllResults(false);
             $id = "cust-" . ($count + 1);
 
             $data = [
@@ -92,7 +100,7 @@ class AuthController extends BaseController
                 session()->setFlashdata('success', 'Registrasi berhasil! Silakan login.');
                 return view('Customer/Login_Page');
             } catch (\Exception $e) {
-                session()->setFlashdata('error', 'Registrasi gagal: '.$e->getMessage());
+                session()->setFlashdata('error', 'Registrasi gagal: ' . $e->getMessage());
                 return redirect()->to('/register')->withInput();
             }
         }

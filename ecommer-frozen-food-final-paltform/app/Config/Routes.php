@@ -15,5 +15,9 @@ $routes->post('/login', 'AuthController::login');
 $routes->get('/register', 'AuthController::register');
 $routes->post('/register', 'AuthController::register');
 
+$routes->get('/logout', 'AuthController::logout');
+
 $routes->get('/LandingPage', 'ProductController::showAll');
 $routes->get('/LandingPage/(:any)', 'ProductController::showCategory/$1');
+
+$routes->get('/cart', 'CartController::index');

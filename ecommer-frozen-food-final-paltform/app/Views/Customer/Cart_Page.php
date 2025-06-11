@@ -1,8 +1,5 @@
 <?= $this->extend('layouts/template') ?>
 <?= $this->section('content') ?>
-<h1>Cart Page</h1>
-    <?= $this->endSection() ?>git
-
 <style>
     .main-content {
         min-height: 70vh;
@@ -64,7 +61,7 @@
                         <input class="form-check-input" fill= "green" type="checkbox" id="selectAll">
                         <label class="form-check-label" for="selectAll">Pilih Semua</label>
                     </div>
-                    <span class="text-muted">Total: 
+                    <span class="text-muted">Total:
                         <strong class="text-danger">Rp120.000</strong>
                     </span>
                 </div>

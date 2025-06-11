@@ -25,12 +25,12 @@ class CartController extends BaseController
         }
 
         $userId = session()->get('User_ID');
-        
+
         // Ambil data cart dengan join ke tabel produk
-        $cartItems = $this->cartModel->select('cart.*, products.name as product_name, products.price, products.image')
-                                    ->join('products', 'products.p_id = cart.p_id')
-                                    ->where('cart.User_ID', $userId)
-                                    ->findAll();
+        $cartItems = $this->cartModel->select('cart.*, product.name as product_name, product.price, product.path')
+            ->join('product', 'product.p_id = cart.p_id')
+            ->where('cart.User_ID', $userId)
+            ->findAll();
 
         $data = [
             'title' => 'Keranjang Belanja',
@@ -39,7 +39,7 @@ class CartController extends BaseController
             'subtotal' => array_sum(array_column($cartItems, 'subtotal'))
         ];
 
-        return view('cart_page', $data);
+        return view('Customer/Cart_Page', $data);
     }
 
     public function add($productId)
@@ -118,7 +118,7 @@ class CartController extends BaseController
         }
 
         $userId = session()->get('User_ID');
-        
+
         // Pastikan cart item milik user yang login
         $cartItem = $this->cartModel->where([
             'cart_id' => $cartId,
@@ -150,10 +150,10 @@ class CartController extends BaseController
         }
 
         $this->cartModel->where('User_ID', $userId)
-                       ->whereIn('cart_id', $selectedItems)
-                       ->delete();
+            ->whereIn('cart_id', $selectedItems)
+            ->delete();
 
         session()->setFlashdata('success', 'Checkout berhasil! Pesanan sedang diproses');
-        return redirect()->to('/orders'); 
+        return redirect()->to('/orders');
     }
 }
