@@ -24,16 +24,10 @@ $routes->get('/cart', 'CartController::index');
 $routes->get('/cart/add/(:any)', 'CartController::add/$1');
 
 $routes->get('/Checkout_Page', 'Pages::index2');
-<<<<<<< HEAD
-=======
+
 $routes->get('/product/(:any)', 'ProductController::show/$1');
->>>>>>> d824c716deac3a6e8d1a8b8150e152ed0e850d50
 $routes->get('/product/(:any)', 'ProductController::show/$1');
 
 $routes->get('/profile', 'AuthController::profile');
 $routes->post('/profile/update', 'AuthController::updateProfile');
-<<<<<<< HEAD
-=======
-
 $routes->get('/Orders','Pages::index2');
->>>>>>> d824c716deac3a6e8d1a8b8150e152ed0e850d50

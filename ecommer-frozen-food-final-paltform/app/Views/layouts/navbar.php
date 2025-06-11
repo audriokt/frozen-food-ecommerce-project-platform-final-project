@@ -55,7 +55,7 @@
                                 <a href="/profile" class="dropdown-item">Profil</a>
                             </li>
                             <li>
-                                <a href="" class="dropdown-item">Pesanan</a>
+                                <a href="/Orders" class="dropdown-item">Pesanan</a>
                             </li>
                             <li>
                                 <a href="/logout" class="dropdown-item text-danger">Keluar</a>
