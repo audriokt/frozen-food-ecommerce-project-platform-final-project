@@ -6,7 +6,7 @@
 
     <!-- Tombol kembali -->
     <h3 class="mb-4 d-flex align-items-center" style="color: #009B4D;">
-    <a href="<?= previous_url() ?>" class="me-3 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">
+    <a href="/LandingPage" class="me-3 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">
         &larr;
     </a>
     
