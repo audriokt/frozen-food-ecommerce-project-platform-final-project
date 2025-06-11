@@ -114,4 +114,36 @@ class AuthController extends BaseController
         session()->setFlashdata('success', 'Anda berhasil logout.');
         return redirect()->to('/login');
     }
+
+    public function profile()
+    {
+        if (!session()->has('User_ID')) {
+            return redirect()->to('/login');
+        }
+
+        $customerModel = new CustomerModel();
+        $userId = session()->get('User_ID');
+        $data['user'] = $customerModel->find($userId);
+
+        return view('Customer/Profile_Page', $data);
+    }
+
+    public function updateProfile()
+    {
+        if (!session()->has('User_ID')) {
+            return redirect()->to('/login');
+        }
+
+        $customerModel = new CustomerModel();
+        $userId = session()->get('User_ID');
+
+        $data = [
+            'Name'  => $this->request->getPost('Name'),
+            'Email' => $this->request->getPost('Email'),
+        ];
+
+        $customerModel->update($userId, $data);
+
+        return redirect()->to('/profile')->with('success', 'Profil berhasil diperbarui.');
+    }
 }
