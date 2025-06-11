@@ -1,9 +1,10 @@
 <?= $this->extend('layouts/template') ?>
 
 <?= $this->section('content') ?>
-<div class="container" style="margin-top: 120px";>
+<div class="container" style="margin-top: 120px" ;>
   <h3 class=" d-flex align-items-center" style="color: #009B4D;">
-  <a href="<?= previous_url() ?>" class="me-1 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">&larr;</a></h3>
+    <a href="/LandingPage" class="me-1 text-decoration-none" style="color: #009B4D; font-size: 2rem; font-weight: bold;">&larr;</a>
+  </h3>
 </div>
 <div class="container">
   <div class="row justify-content-center">
@@ -12,7 +13,7 @@
         <h5 class="mb-3">Foto Profil</h5>
         <img src="https://via.placeholder.com/120" alt="" class="profile-img mx-auto">
         <button type="submit" class="btn btn-outline-success">Ubah Profile</button>
-      </div> 
+      </div>
     </div>
 
     <div class="col-md-8">
@@ -35,8 +36,8 @@
         </form>
       </div>
     </div>
-</div>
   </div>
+</div>
 
 <style>
   body {
