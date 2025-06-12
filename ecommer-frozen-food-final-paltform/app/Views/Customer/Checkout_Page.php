@@ -77,6 +77,24 @@
         </div>
     </div>
 
+    <!-- Metode Pembayaran -->
+    <div class="card mb-4">
+        <div class="card-header bg-light">Metode Pembayaran</div>
+        <div class="card-body">
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="metode_pembayaran" id="bank_transfer" value="Bank Transfer" checked>
+                <label class="form-check-label" for="bank_transfer">Transfer Bank (BRI)</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="metode_pembayaran" id="ewallet" value="e-Wallet">
+                <label class="form-check-label" for="ewallet">e-Wallet (DANA)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="metode_pembayaran" id="cod" value="COD">
+                <label class="form-check-label" for="cod">Bayar di Tempat (COD)</label>
+            </div>
+        </div>
+    </div>
 
     <!-- Tombol -->
     <div class="d-grid">
