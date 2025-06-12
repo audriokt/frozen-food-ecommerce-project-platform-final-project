@@ -30,5 +30,9 @@ $routes->get('/product/(:any)', 'ProductController::show/$1');
  
 $routes->get('/profile', 'AuthController::profile');
 $routes->post('/profile/update', 'AuthController::updateProfile');
+<<<<<<< HEAD
 
 $routes->get('/Cart_Page','Pages::index2');
+=======
+$routes->get('/Orders','Pages::index2');
+>>>>>>> db43bbdeae944fa9b9ab0e381a6457d1c7b26cc7

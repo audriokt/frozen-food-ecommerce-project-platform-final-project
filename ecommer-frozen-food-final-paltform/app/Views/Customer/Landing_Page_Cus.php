@@ -49,13 +49,13 @@
             </td>
             <td class="text-center">
                 <a href="/LandingPage/cate-2" class="nav-link" style="background-color:rgb(255, 169, 164); border-radius: 20px;">
-                    <img src="<?= base_url('images/cat_barbecue.png') ?>" alt="Sayuran" width="150px"><br>
-                    <label for="cat_daging" style="font-family: Outfit;">Daging</label>
+                    <img src="<?= base_url('images/cat_barbecue.png') ?>" alt="Ayam, Daging & Ikan" width="150px"><br>
+                    <label for="cat_daging" style="font-family: Outfit;">Ayam, Daging & Ikan</label>
                 </a>
             </td>
             <td class="text-center">
                 <a href="/LandingPage/cate-3" class="nav-link" style="background-color:rgb(234, 255, 164); border-radius: 20px;">
-                    <img src="<?= base_url('images/cat_vegetable.png') ?>" alt="Ayam, Daging & Ikan" width="150px"><br>
+                    <img src="<?= base_url('images/cat_vegetable.png') ?>" alt="Sayur & Buah" width="150px"><br>
                     <label for="cat_sayurbuah" style="font-family: Outfit;">Sayur & Buah</label>
                 </a>
             </td>
