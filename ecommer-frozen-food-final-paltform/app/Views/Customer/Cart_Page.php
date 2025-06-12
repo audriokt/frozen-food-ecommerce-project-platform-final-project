@@ -15,7 +15,7 @@
         Keranjang Saya (<?= session()->get('Total_Item_Cart') ?? 0 ?>)
     </h4>
 
-    <form action="<?= site_url('cart/update') ?>" method="post">
+    <form action="<?= site_url('cart/checkout') ?>" method="post">
         <?= csrf_field(); ?>
 
         <!-- Item Keranjang -->
@@ -46,68 +46,87 @@
                                 </a>
                             </div>
 
-                            <div class="d-flex align-items-center mt-2">
-                                <span class="fw-bold text-danger me-3"><?= $item['subtotal'] ?></span>
+                            <div>
+                            <span class="fw-bold text-danger me-3 subtotal-text">
+                                Rp<?= number_format($item['price'] * $item['quantity'], 0, ',', '.') ?></span>
+                            </div>
 
-                                <!-- Kuantitas -->
+                            <!-- Kuantitas -->
                                 <div class="input-group" style="width: 120px;">
-                                    <button type="button" class="btn btn-outline-secondary btn-sm qty-minus">−</button>
-                                    <input type="number" class="form-control text-center" name="quantity" min="1" value="<?= $item['quantity'] ?>">
-                                    <button type="button" class="btn btn-outline-secondary btn-sm qty-plus">＋</button>
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm qty-minus">−</button>
+                                    <input type="number" class="form-control text-center qty-input" name="quantity[<?= esc($item['cart_id'])?>]" min="1" value="<?= $item['quantity'] ?>" data-price="<?= $item['price'] ?>">
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm qty-plus">＋</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-        <!-- Ringkasan -->
-        <div class="card sticky-bottom shadow-sm mb-5">
-            <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-center">
-                <div>
-                    <div class="form-check d-inline-block me-3">
-                        <input class="form-check-input" fill="green" type="checkbox" id="selectAll">
-                        <label class="form-check-label" for="selectAll">Pilih Semua</label>
-                    </div>
-                    <span class="text-muted">Total:
-                        <strong class="text-danger" id="total-price">Rp0</strong>
-                    </span>
-                </div>
+            <?php endforeach; ?>
 
-                <div class="mt-3 mt-md-0">
-                    <a href="<?= site_url('/') ?>" class="btn btn-outline-secondary me-2">Belanja Lagi</a>
-                    <button type="submit" class="btn btn-success">Checkout</button>
+            <!-- Ringkasan -->
+            <div class="card sticky-bottom shadow-sm mb-5">
+                <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <div>
+                        <div class="form-check d-inline-block me-3">
+                            <input class="form-check-input" fill="green" type="checkbox" id="selectAll">
+                            <label class="form-check-label" for="selectAll">Pilih Semua</label>
+                        </div>
+                        <span class="text-muted">Total:
+                            <strong class="text-danger" id="total-price">Rp0</strong>
+                        </span>
+                    </div>
+
+                    <div class="mt-3 mt-md-0">
+                        <a href="<?= site_url('/') ?>" class="btn btn-outline-secondary me-2">Belanja Lagi</a>
+                        <button type="submit" class="btn btn-success">Checkout</button>
+                    </div>
                 </div>
             </div>
         </div>
     </form>
 </div>
 
-<script>
+    <script>
+    function updateSubtotalAndTotal() {
+        let total = 0;
+        document.querySelectorAll('.card-body').forEach(card => {
+            const qtyInput = card.querySelector('.qty-input');
+            const checkbox = card.querySelector('.item-checkbox');
+            const subtotalText = card.querySelector('.subtotal-text');
+
+            const quantity = parseInt(qtyInput.value);
+            const price = parseFloat(qtyInput.dataset.price);
+            const subtotal = quantity * price;
+
+            subtotalText.textContent = formatRupiah(subtotal);
+
+            if (checkbox && checkbox.checked) {
+                total += subtotal;
+            }
+        });
+
+        document.getElementById('total-price').textContent = formatRupiah(total);
+    }
+
+    // Saat tombol + ditekan
     document.querySelectorAll('.qty-plus').forEach(btn => {
         btn.addEventListener('click', () => {
             const input = btn.previousElementSibling;
             input.value = parseInt(input.value) + 1;
+            updateTotal();
+            updateSubtotalAndTotal();
         });
     });
 
-
+    // Saat tombol - ditekan
     document.querySelectorAll('.qty-minus').forEach(btn => {
         btn.addEventListener('click', () => {
             const input = btn.nextElementSibling;
-            if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
-        });
-    });
-
-    document.getElementById('selectAll')?.addEventListener('change', function() {
-        document.querySelectorAll('input[name="selected[]"]').forEach(cb => cb.checked = this.checked);
-    });
-
-    document.querySelectorAll('.item-checkbox').forEach(cb => {
-        cb.addEventListener('change', function() {
-            const allChecked = Array.from(document.querySelectorAll('.item-checkbox')).every(c => c.checked);
-            document.getElementById('selectAll').checked = allChecked;
-            updateTotal();
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+                updateTotal();
+                updateSubtotalAndTotal();
+            }
         });
     });
 
@@ -118,7 +137,11 @@
     function updateTotal() {
         let total = 0;
         document.querySelectorAll('.item-checkbox:checked').forEach(cb => {
-            total += parseFloat(cb.dataset.subtotal) * 1000;
+            const card = cb.closest('.card-body');
+            const qtyInput = card.querySelector('.qty-input');
+            const price = parseFloat(qtyInput.dataset.price);
+            const quantity = parseInt(qtyInput.value);
+            total += price * quantity;
         });
         document.getElementById('total-price').textContent = formatRupiah(total);
     }
@@ -127,13 +150,10 @@
         cb.addEventListener('change', updateTotal);
     });
 
-    document.getElementById('selectAll')?.addEventListener('change', function() {
+    document.getElementById('selectAll')?.addEventListener('change', function () {
         document.querySelectorAll('.item-checkbox').forEach(cb => cb.checked = this.checked);
         updateTotal();
     });
-
-    updateTotal();
-    
-</script>
+    </script>
 
 <?= $this->endSection() ?>

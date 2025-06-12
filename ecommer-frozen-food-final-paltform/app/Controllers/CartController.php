@@ -169,14 +169,15 @@ class CartController extends BaseController
             return redirect()->to('/cart');
         }
 
-        $cartItems = $this->cartModel
+        $cartItems = $this->cartModel->select('cart.*, product.name as product_name, product.price as price, product.path as path')
+            ->join('product', 'product.p_id = cart.p_id')
             ->where('User_ID', $userId)
             ->whereIn('cart_id', $selectedItems)
             ->findAll();
 
         $userName = session()->get('User_Name'); // pastikan ada di session
 
-        return view('checkout', [
+        return view('Customer/Checkout_Page', [
             'userName' => $userName,
             'cartItems' => $cartItems
         ]);

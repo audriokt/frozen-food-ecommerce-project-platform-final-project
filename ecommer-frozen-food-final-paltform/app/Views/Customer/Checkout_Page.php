@@ -18,7 +18,7 @@
         <div class="card-header text-white" style="background-color: #009B4D;">Alamat Pengiriman</div>
         <div class="card-body">
             <strong><?php
-                echo "<h3 style='font-family:Outfit;'> Selamat Datang " . session()->get('Name') . "</h3>";?></strong><br>
+                echo session()->get('Name');?></strong><br>
             0812-2233-9846<br>
             Jalan Paingan XI No. 9, RT.8/RW.7, Maguwoharjo, Depok (Kost putri)<br>
             Depok, Kab. Sleman, DI Yogyakarta, 545637
@@ -35,7 +35,7 @@
         <div class="card mb-4">
             <div class="card-header bg-light">Produk Dipesan</div>
             <div class="card-body d-flex">
-                <img src="<?= base_url($item['product_image']) ?>" alt="<?= $item['product_name'] ?>" style="width: 120px;" class="me-3">
+                <img src="<?= base_url($item['path']) ?>" alt="<?= $item['product_name'] ?>" style="width: 120px;" class="me-3">
                 <div>
                     <h6 class="mb-1"><?= esc($item['product_name']) ?></h6>
                     <p class="mb-1">Jumlah: <?= $item['quantity'] ?></p>
