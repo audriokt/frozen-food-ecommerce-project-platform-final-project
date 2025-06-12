@@ -169,11 +169,17 @@ class CartController extends BaseController
             return redirect()->to('/cart');
         }
 
-        $this->cartModel->where('User_ID', $userId)
+        $cartItems = $this->cartModel
+            ->where('User_ID', $userId)
             ->whereIn('cart_id', $selectedItems)
-            ->delete();
+            ->findAll();
 
-        session()->setFlashdata('success', 'Checkout berhasil! Pesanan sedang diproses');
-        return redirect()->to('/orders');
+        $userName = session()->get('User_Name'); // pastikan ada di session
+
+        return view('checkout', [
+            'userName' => $userName,
+            'cartItems' => $cartItems
+        ]);
     }
+
 }
