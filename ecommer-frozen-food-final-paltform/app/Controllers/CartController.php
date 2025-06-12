@@ -144,7 +144,14 @@ class CartController extends BaseController
         } else {
             session()->setFlashdata('error', 'Item tidak ditemukan');
         }
-
+        $cartItems = $this->cartModel->select('cart.*, product.name as product_name, product.price, product.path')
+                ->join('product', 'product.p_id = cart.p_id')
+                ->where('cart.User_ID', $userId)
+                ->findAll();
+            session()->set([
+                'Total_Item_Cart' => count($cartItems),
+        ]);
+        session()->setFlashdata('success', 'Product terhapus');
         return redirect()->to('/cart');
     }
 
