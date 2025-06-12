@@ -36,5 +36,6 @@ $routes->get('/checkout','Pages::index3');
 
 $routes->post('/cart/update', 'CartController::update');
 $routes->post('/cart/checkout', 'CartController::checkout');
+$routes->post('/checkout/bayar','PaymentController::bayar');
 
 $routes->get('/Cart_Page', 'Pages::index2');
