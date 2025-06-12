@@ -13,4 +13,8 @@ class Pages extends BaseController
  {
    return view('Customer/Orders_Page');
  }
+ public function index3()
+ {
+   return view('Customer/Checkout_Page');
+ }
 }

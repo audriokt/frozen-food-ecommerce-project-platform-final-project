@@ -30,3 +30,5 @@ $routes->get('/product/(:any)', 'ProductController::show/$1');
 $routes->get('/profile', 'AuthController::profile');
 $routes->post('/profile/update', 'AuthController::updateProfile');
 $routes->get('/Orders','Pages::index2');
+
+$routes->get('/checkout','Pages::index3');
