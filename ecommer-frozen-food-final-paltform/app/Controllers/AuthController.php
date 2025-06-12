@@ -41,7 +41,7 @@ class AuthController extends BaseController
                     'Name' => $customer['Name'],
                     'Total_Item_Cart' => count($cartItems),
                 ]);
-
+                session()->setFlashdata('success', 'Login berhasil! Selamat datang, ' . $customer['Name'] . '.');
                 return redirect()->to('/LandingPage');
             } else {
                 session()->setFlashdata('error', 'Email atau password salah.');
