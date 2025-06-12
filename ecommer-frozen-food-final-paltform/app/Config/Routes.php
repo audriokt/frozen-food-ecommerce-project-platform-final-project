@@ -22,6 +22,7 @@ $routes->get('/LandingPage/(:any)', 'ProductController::showCategory/$1');
 
 $routes->get('/cart', 'CartController::index');
 $routes->get('/cart/add/(:any)', 'CartController::add/$1');
+$routes->get('/cart/delete/(:any)', 'CartController::delete/$1');
 
 $routes->get('/Checkout_Page', 'Pages::index2');
 
