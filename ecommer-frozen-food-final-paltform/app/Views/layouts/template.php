@@ -48,17 +48,33 @@
                 <?= $this->renderSection('content'); ?>
 
             </main>
+          
             <!-- Footer -->
-            <div class="container-fluid mt-4" style="background-color: #009B4D;">
-                <footer class="text-center py-3 text-white" style="font-family: Outfit, sans-serif; height: 430px;">
-                    <h5>Ingpo</h5>
-                    <ul>
-                        <li class="nav flex-column">Hubungi Kami</li>
-                    </ul>
-                </footer>
-            </div>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+<div class="container-fluid mt-4" style="background-color: #009B4D;">
+  <footer class="text-white py-3 text-center" style="font-family: Outfit, sans-serif;">
+    <h5>Hubungi Kami</h5>
+    
 
+    <div class="footer-contact mb-3">
+      <p>Email: <a href="snowé@gmail.com" class="text-white">snowé@gmail.com</a></p>
+      <p>Telepon: 0813-4778-2231</p>
+      <p>Alamat: Jl. Paingan No. 3, Depok, Sleman</p>
+    </div>
+
+    <div class="footer-social mb-3">
+      <a href="https://www.facebook.com/snowé" target="_blank" class="text-white me-3">
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      <a href="https://www.instagram.com/snowé" target="_blank" class="text-white">
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+    </div>
+
+    <div class="footer-copyright">
+      <p class="mb-0">&copy; 2025 Snowé Frozen Food. All rights reserved.</p>
+    </div>
+  </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     </body>
-
     </html>

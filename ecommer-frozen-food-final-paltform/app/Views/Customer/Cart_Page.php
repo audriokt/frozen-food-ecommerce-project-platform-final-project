@@ -26,7 +26,7 @@
 
                         <!-- Checkbox -->
                         <div class="form-check me-3 mt-2">
-                            <input class="form-check-input item-checkbox" type="checkbox" name="selected[]" value="<?= $item['cart_id'] ?>" data-subtotal="<?= $item['subtotal'] * $item['quantity'] ?>">
+                            <input class="form-check-input item-checkbox" type="checkbox" name="selected[]" value="<?= $item['cart_id'] ?>" data-subtotal="<?= $item['subtotal'] ?>">
                         </div>
 
                         <!-- Gambar Produk -->
@@ -47,12 +47,12 @@
                             </div>
 
                             <div class="d-flex align-items-center mt-2">
-                                <span class="fw-bold text-danger me-3"><?= $item['price'] ?></span>
+                                <span class="fw-bold text-danger me-3"><?= $item['subtotal'] ?></span>
 
                                 <!-- Kuantitas -->
                                 <div class="input-group" style="width: 120px;">
                                     <button type="button" class="btn btn-outline-secondary btn-sm qty-minus">−</button>
-                                    <input type="number" class="form-control text-center" name="quantity[1]" min="1" value="<?= $item['quantity'] ?>">
+                                    <input type="number" class="form-control text-center" name="quantity" min="1" value="<?= $item['quantity'] ?>">
                                     <button type="button" class="btn btn-outline-secondary btn-sm qty-plus">＋</button>
                                 </div>
                             </div>
@@ -91,6 +91,7 @@
         });
     });
 
+
     document.querySelectorAll('.qty-minus').forEach(btn => {
         btn.addEventListener('click', () => {
             const input = btn.nextElementSibling;
@@ -101,6 +102,15 @@
     document.getElementById('selectAll')?.addEventListener('change', function() {
         document.querySelectorAll('input[name="selected[]"]').forEach(cb => cb.checked = this.checked);
     });
+
+    document.querySelectorAll('.item-checkbox').forEach(cb => {
+        cb.addEventListener('change', function() {
+            const allChecked = Array.from(document.querySelectorAll('.item-checkbox')).every(c => c.checked);
+            document.getElementById('selectAll').checked = allChecked;
+            updateTotal();
+        });
+    });
+
     function formatRupiah(angka) {
         return 'Rp' + angka.toLocaleString('id-ID');
     }
@@ -108,7 +118,7 @@
     function updateTotal() {
         let total = 0;
         document.querySelectorAll('.item-checkbox:checked').forEach(cb => {
-            total += parseInt(cb.dataset.subtotal);
+            total += parseFloat(cb.dataset.subtotal) * 1000;
         });
         document.getElementById('total-price').textContent = formatRupiah(total);
     }
