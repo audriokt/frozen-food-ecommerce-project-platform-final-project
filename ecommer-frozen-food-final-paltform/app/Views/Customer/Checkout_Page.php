@@ -30,6 +30,12 @@
     <?php $grandTotal = 0; ?>
     <?php foreach ($cartItems as $item): ?>
         <?php 
+            if (is_null($quantity)) {
+                $quantity = $item['quantity'];
+            } 
+            if (is_null($product_name)){
+                $product_name = $item['product_name'];
+            }
             $totalPerItem = $quantity * $item['price'];
             $grandTotal += $totalPerItem;
         ?>

@@ -178,8 +178,8 @@ class CartController extends BaseController
         $userName = session()->get('User_Name'); // pastikan ada di session
 
         return view('Customer/Checkout_Page', [
-            'quantity' => $cartItems['quantity'],
-            'product_name' => $cartItems['product_name'],
+            'quantity' => null,
+            'product_name' => null,
             'userName' => $userName,
             'cartItems' => $cartItems
         ]);
@@ -202,7 +202,7 @@ class CartController extends BaseController
 
         return view('Customer/Checkout_Page', [
             'quantity' => 1,
-            'product_name' => $product['name'],
+            'product_name' => $product['name'], 
             'userName' => $userName,
             'cartItems' => [$product]
         ]);
