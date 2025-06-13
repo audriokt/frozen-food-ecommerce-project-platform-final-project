@@ -33,7 +33,7 @@
 
                     <!-- Gambar Produk -->
                     <a class="nav-link" href="/product/<?= $item['product_id'] ?>">
-                        <img src="<?= base_url($item['path']) ?>" class="card-img-top" alt="<?= htmlspecialchars($item['product_name']) ?>">
+                        <img src="<?= base_url($item['path']) ?>" class="card-img-top" alt="<?= htmlspecialchars($item['product_name']) ?>" width="200px" height="200px">
                     </a>
                     
                     <!-- Detail Produk -->
@@ -51,7 +51,7 @@
             <!-- Ringkasan -->
             <hr>
             <div class="d-flex justify-content-between">
-                <span>Total Produk</span>
+                <span>Total Harga</span>
                 <span>Rp<?= number_format($orderData['total_price'] - 500, 0, ',', '.') ?></span>
             </div>
             <div class="d-flex justify-content-between">
