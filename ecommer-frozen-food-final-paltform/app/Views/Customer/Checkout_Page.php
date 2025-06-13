@@ -29,7 +29,7 @@
     <!-- Produk yang Dipesan -->
     <?php $grandTotal = 0; ?>
     <?php foreach ($cartItems as $item): ?>
-        <?php 
+        <?php
             $totalPerItem = $item['quantity'] * $item['price'];
             $grandTotal += $totalPerItem;
         ?>
