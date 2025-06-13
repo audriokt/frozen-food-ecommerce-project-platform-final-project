@@ -29,13 +29,12 @@ $routes->get('/product/(:any)', 'ProductController::show/$1');
 
 $routes->get('/profile', 'AuthController::profile');
 $routes->post('/profile/update', 'AuthController::updateProfile');
-
-$routes->get('/Orders','Pages::index2');
-
-$routes->get('/checkout','Pages::index3');
-
 $routes->post('/cart/update', 'CartController::update');
 $routes->post('/cart/checkout', 'CartController::checkout');
+$routes->post('/cart/checkout/(:any)', 'CartController::directCheckout/$1');
+
 $routes->post('/checkout/bayar','PaymentController::bayar');
+$routes->get('/cart/checkout', 'CartController::checkout');
+$routes->post('/cart/checkout', 'PaymentController::bayar');
 
 $routes->get('/Cart_Page', 'Pages::index2');

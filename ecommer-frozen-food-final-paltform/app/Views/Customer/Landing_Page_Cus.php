@@ -78,10 +78,12 @@
                             <a class="nav-link" href="/product/<?= $product['p_id'] ?>">
                                 <h5 style="font-family: Outfit;" class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
                             </a>
-                            <h6 class="fw-bold text-danger"><?= $product['price'] ?></h6>
+                            <h6 class="fw-bold text-danger"><?= number_format($product['price'], 0, ',', '.') ?></h6>
                             <div class="mt-auto">
-                                <a href="#" class="btn m-1 float-end" style="background-color: #009D4B; color:white;">Beli</a>
-                                <a href="/cart/add/<?= $product['p_id'] ?>" class="btn m-1 float-end" style="background-color:rgb(221, 221, 221); color:black;">Keranjang</a>
+                                <form action="/cart/checkout/<?= $product['p_id'] ?> " method = "post">
+                                    <button type ="submit" class="btn m-1 float-end" style="background-color: #009D4B; color:white;">Beli</button>
+                                    <a href="/cart/add/<?= $product['p_id'] ?>" class="btn m-1 float-end" style="background-color:rgb(221, 221, 221); color:black;">Keranjang</a>
+                                </form>
                             </div>
                         </div>
                     </div>
