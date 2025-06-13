@@ -30,20 +30,18 @@
     <?php $grandTotal = 0; ?>
     <?php foreach ($cartItems as $item): ?>
         <?php 
-            $totalPerItem = $item['quantity'] * $item['price'];
+            $totalPerItem = $quantity * $item['price'];
             $grandTotal += $totalPerItem;
         ?>
         <div class="card mb-4">
             <div class="card-header bg-light">Produk Dipesan</div>
             <div class="card-body d-flex">
-                <img src="<?= base_url($item['path']) ?>" alt="<?= $item['product_name'] ?>" style="width: 120px;" class="me-3">
+                <img src="<?= base_url($item['path']) ?>" alt="<?= $product_name?>" style="width: 120px;" class="me-3">
                 <div>
-                    <h6 class="mb-1"><?= esc($item['product_name']) ?></h6>
-                    <p class="mb-1">Jumlah: <?= $item['quantity'] ?></p>
+                    <h6 class="mb-1"><?= esc($product_name)?></h6>
+                    <p class="mb-1">Jumlah: <?= $quantity?></p>
                     <p class="fw-bold mb-0" style="color: #009B4D;">Rp<?= number_format($totalPerItem, 0, ',', '.') ?></p>
-                    <?php if (!empty($item['original_price']) && $item['original_price'] > $item['price']): ?>
-                        <small class="text-muted"><del>Rp<?= number_format($item['original_price'], 0, ',', '.') ?></del></small>
-                    <?php endif; ?>
+                    
                 </div>
             </div>
         </div>

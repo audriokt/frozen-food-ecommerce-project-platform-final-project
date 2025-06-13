@@ -178,8 +178,33 @@ class CartController extends BaseController
         $userName = session()->get('User_Name'); // pastikan ada di session
 
         return view('Customer/Checkout_Page', [
+            'quantity' => $cartItems['quantity'],
+            'product_name' => $cartItems['product_name'],
             'userName' => $userName,
             'cartItems' => $cartItems
+        ]);
+    }
+
+    public function directCheckout($item)
+    {
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/login');
+        }
+
+        $userId = session()->get('User_ID');
+        $selectedItems = $this->request->getPost('selected');
+
+        $product = $this->productModel
+        ->where('p_id', $item)
+        ->first();
+
+        $userName = session()->get('User_Name'); // pastikan ada di session
+
+        return view('Customer/Checkout_Page', [
+            'quantity' => 1,
+            'product_name' => $product['name'],
+            'userName' => $userName,
+            'cartItems' => [$product]
         ]);
     }
 
