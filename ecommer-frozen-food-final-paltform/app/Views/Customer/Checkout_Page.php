@@ -86,7 +86,7 @@
                 <input class="form-check-input" type="radio" name="metode_pembayaran" id="bank_transfer" value="Bank Transfer" checked>
                 <label class="form-check-label" for="bank_transfer">Transfer Bank (BRI)</label>
             </div>
-            <div class="form-check mb-2">
+            <div class="fo   rm-check mb-2">
                 <input class="form-check-input" type="radio" name="metode_pembayaran" id="ewallet" value="e-Wallet">
                 <label class="form-check-label" for="ewallet">e-Wallet (DANA)</label>
             </div>
