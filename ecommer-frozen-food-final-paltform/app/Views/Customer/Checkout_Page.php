@@ -13,6 +13,7 @@
     <!-- Header -->
     <h3 class="mb-4" style="color: #009B4D;">Checkout</h3>
 
+    <form action = "<?= site_url('/checkout/bayar')?>" method = "post">
     <!-- untuk Alamat customer -->
     <div class="card mb-4" style="border-color: #009B4D;">
         <div class="card-header text-white" style="background-color: #009B4D;">Alamat Pengiriman</div>
@@ -98,8 +99,9 @@
 
     <!-- Tombol -->
     <div class="d-grid">
-        <button class="btn btn-lg text-white" style="background-color: #009B4D;">Bayar</button>
+        <button type = "submit" class="btn btn-lg text-white" style="background-color: #009B4D;">Bayar</button>
     </div>
+    </form>
 </div>
 
 <?= $this->endSection() ?>
