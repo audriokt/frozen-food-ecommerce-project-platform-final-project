@@ -199,18 +199,9 @@ class CartController extends BaseController
             ->where('p_id', $item)
             ->first();
 
-        $count = $this->cartModel->countAllResults(false);
-        $id = "cust-" . ($count + 1);
-
-        $this->cartModel->insert([
-                'cart_id' => $id,
-                'User_ID' => $userId,
-                'p_id' => $item,
-                'quantity' => 1,
-                'subtotal' => $product['price']
-            ]);
-
-        $userName = session()->get('User_Name'); // pastikan ada di session
+        $userName = session()->get('User_Name');
+        session()->set('direct_checkout', $item);
+        session()->set('direct_checkout_status', true);
 
         return view('Customer/Checkout_Page', [
             'quantity' => 1,

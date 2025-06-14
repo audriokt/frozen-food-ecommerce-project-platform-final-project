@@ -127,4 +127,35 @@ class PaymentController extends BaseController
     {
         $this->cartModel->delete($item['cart_id']);
     }
+
+
+
+    public function directBayar($directCheckoutProductId)
+    {
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/login');
+        }
+
+        $method = $this->request->getPost('metode_pembayaran');
+        $userId = session()->get('User_ID');
+        $product = $this->productModel->find($directCheckoutProductId);
+        $orderId = $this->generateOrderId();
+        $grandTotal = $product['price'] + 500;
+        $this->saveOrder($orderId, $userId, $grandTotal, $method);
+        $detailOrderId = $this->generateDetailOrderId();
+        $detailOrderData = [
+            'id'          => $detailOrderId,
+            'p_id'        => $directCheckoutProductId,
+            'order_id'    => $orderId,
+            'price'       => $product['price'],
+            'quantity'    => 1
+        ];
+        $this->orderDetailModel->insert($detailOrderData);
+        $this->productModel->update($directCheckoutProductId, [
+            'stock' => $product['stock'] - 1
+        ]);
+        session()->set('direct_checkout_status', false);
+
+        return redirect()->to('/Order');
+    }
 }

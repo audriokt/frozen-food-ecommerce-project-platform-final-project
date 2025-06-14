@@ -34,6 +34,7 @@ $routes->post('/cart/checkout', 'CartController::checkout');
 $routes->post('/cart/checkout/(:any)', 'CartController::directCheckout/$1');
 
 $routes->post('/checkout/bayar', 'PaymentController::bayar');
+$routes->post('/checkout/bayar/(:any)', 'PaymentController::directBayar/$1');
 $routes->get('/cart/checkout', 'CartController::checkout');
 $routes->post('/cart/checkout', 'PaymentController::bayar');
 

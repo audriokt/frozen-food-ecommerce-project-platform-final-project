@@ -24,16 +24,6 @@
                 <div class="col-md-6">
                   <h2 class="fw-bold text-center mb-5" style="font-family: Outfit;">MASUK</h2>
 
-                  <?php if (session()->getFlashdata('error')) {
-                    echo '<div class="alert alert-danger" role="alert">' . session()->getFlashdata('error') . '</div>';
-                  } elseif (session()->getFlashdata('success')) {
-                    echo '<div class="toast">
-                            <div class="toast-body
-                      ' . session()->getFlashdata('success') . '
-                            </div>
-                          </div>';
-                  } ?>
-
                   <form action="/login" method="post">
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
