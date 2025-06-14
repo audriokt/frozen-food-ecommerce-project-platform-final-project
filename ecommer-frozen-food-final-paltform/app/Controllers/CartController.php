@@ -146,11 +146,11 @@ class CartController extends BaseController
             session()->setFlashdata('error', 'Item tidak ditemukan');
         }
         $cartItems = $this->cartModel->select('cart.*, product.name as product_name, product.price, product.path')
-                ->join('product', 'product.p_id = cart.p_id')
-                ->where('cart.User_ID', $userId)
-                ->findAll();
-            session()->set([
-                'Total_Item_Cart' => count($cartItems),
+            ->join('product', 'product.p_id = cart.p_id')
+            ->where('cart.User_ID', $userId)
+            ->findAll();
+        session()->set([
+            'Total_Item_Cart' => count($cartItems),
         ]);
         session()->setFlashdata('success', 'Product terhapus');
         return redirect()->to('/cart');
@@ -196,17 +196,27 @@ class CartController extends BaseController
         $selectedItems = $this->request->getPost('selected');
 
         $product = $this->productModel
-        ->where('p_id', $item)
-        ->first();
+            ->where('p_id', $item)
+            ->first();
+
+        $count = $this->cartModel->countAllResults(false);
+        $id = "cust-" . ($count + 1);
+
+        $this->cartModel->insert([
+                'cart_id' => $id,
+                'User_ID' => $userId,
+                'p_id' => $item,
+                'quantity' => 1,
+                'subtotal' => $product['price']
+            ]);
 
         $userName = session()->get('User_Name'); // pastikan ada di session
 
         return view('Customer/Checkout_Page', [
             'quantity' => 1,
-            'product_name' => $product['name'], 
+            'product_name' => $product['name'],
             'userName' => $userName,
             'cartItems' => [$product]
         ]);
     }
-
 }

@@ -5,28 +5,85 @@ namespace App\Controllers;
 use App\Models\OrderModel;
 use App\Models\CartModel;
 use App\Models\ProductModel;
+use App\Models\OrderDetailModel;
 
 class PaymentController extends BaseController
 {
+    protected $orderModel;
+    protected $cartModel;
+    protected $productModel;
+    protected $orderDetailModel;
+
+    public function __construct()
+    {
+        $this->orderModel = new OrderModel();
+        $this->cartModel = new CartModel();
+        $this->productModel = new ProductModel();
+        $this->orderDetailModel = new OrderDetailModel();
+    }
+
     public function bayar()
     {
         $userId = session()->get('User_ID');
         $method = $this->request->getPost('metode_pembayaran');
 
-        $orderModel = new OrderModel();
-        $cartModel = new CartModel();
-        $productModel = new ProductModel();
+        $cartItems = $this->getCartItems($userId);
+        $orderId = $this->generateOrderId();
+        $grandTotal = $this->calculateGrandTotal($cartItems);
 
-        $cartItems = $cartModel
+
+        $this->saveOrder($orderId, $userId, $grandTotal, $method);
+
+        $orderedItems = $this->processCartItems($cartItems, $orderId);
+
+        session()->set('Total_Item_Cart', 0);
+
+        return redirect()->to('/Order');
+    }
+
+    private function getCartItems($userId)
+    {
+        return $this->cartModel
             ->select('cart.*, product.p_id, product.name as product_name, product.price as price, product.path')
             ->join('product', 'product.p_id = cart.p_id')
             ->where('cart.User_ID', $userId)
             ->findAll();
+    }
 
-        $count = $orderModel->countAll();
-        $orderId = "ord-" . ($count + 1);
+    private function generateOrderId()
+    {
+        $countOrder = $this->orderModel->countAll();
+        return "ord-" . ($countOrder + 1);
+    }
+
+    private function generateDetailOrderId()
+    {
+        $countOrder = $this->orderDetailModel->countAll();
+        return "detOrd-" . ($countOrder + 1);
+    }
+
+    private function calculateGrandTotal($cartItems)
+    {
+        $total = array_sum(array_column($cartItems, 'subtotal'));
+        return $total + 500;
+    }
+
+    private function saveOrder($orderId, $userId, $grandTotal, $method)
+    {
+        $orderData = [
+            'order_id'        => $orderId,
+            'User_ID'         => $userId,
+            'order_date'      => date('Y-m-d H:i:s'),
+            'total_price'     => $grandTotal,
+            'payment_method'  => $method,
+            'shipping_address' => 'Jalan Paingan XI No. 9, RT.8/RW.7, Maguwoharjo, Depok (Kost putri), Depok, Kab. Sleman, DI Yogyakarta, 545637',
+        ];
+        $this->orderModel->insert($orderData);
+    }
+
+    private function processCartItems($cartItems, $orderId)
+    {
         $orderedItems = [];
-        $grandTotal = 0;
 
         foreach ($cartItems as $item) {
             $orderedItems[] = [
@@ -37,38 +94,37 @@ class PaymentController extends BaseController
                 'price'         => $item['price'],
                 'subtotal'      => $item['subtotal']
             ];
-            $grandTotal += $item['subtotal'];
 
-            // Hapus item dari keranjang setelah diproses
-            $cartModel->delete($item['cart_id']);
-
-            $product = $productModel->where('p_id', $item['p_id'])->first();
-            $productModel->update($item['p_id'], [
-                'stock' => $product['stock'] - $item['quantity']
-            ]);
+            $this->saveOrderDetail($item, $orderId);
+            $this->updateStock($item);
+            $this->removeFromCart($item);
         }
 
-        session()->set('Total_Item_Cart', 0); // Reset jumlah item di keranjang
-        // Tambahkan biaya proteksi kerusakan
-        $totalWithProtection = $grandTotal + 500;
+        return $orderedItems;
+    }
 
-        // Simpan ke database
-        $orderData = [
-            'order_id'        => $orderId,
-            'User_ID'         => $userId,
-            'order_date'      => date('Y-m-d H:i:s'),
-            'total_price'     => $totalWithProtection,
-            'payment_method'  => $method,
-            'shipping_address' => 'Jalan Paingan XI No. 9, RT.8/RW.7, Maguwoharjo,
-             Depok (Kost putri) Depok, Kab. Sleman, DI Yogyakarta, 545637',
+    private function saveOrderDetail($item, $orderId)
+    {
+        $detailOrderData = [
+            'id'          => $this->generateDetailOrderId(),
+            'p_id'        => $item['p_id'],
+            'order_id'    => $orderId,
+            'price'       => $item['price'],
+            'quantity'    => $item['quantity']
         ];
+        $this->orderDetailModel->insert($detailOrderData);
+    }
 
-        $orderModel->insert($orderData);
-        return view('Customer/Orders_Page', [
-            'orderData' => $orderData,
-            'orderedItems' => $orderedItems
+    private function updateStock($item)
+    {
+        $product = $this->productModel->where('p_id', $item['p_id'])->first();
+        $this->productModel->update($item['p_id'], [
+            'stock' => $product['stock'] - $item['quantity']
         ]);
     }
+
+    private function removeFromCart($item)
+    {
+        $this->cartModel->delete($item['cart_id']);
+    }
 }
-
-

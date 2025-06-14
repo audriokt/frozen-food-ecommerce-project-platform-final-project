@@ -21,10 +21,9 @@ class Order extends Migration
                 'type' => 'DATETIME',
                 'null' => false,
             ],
-            'total_price' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '10,2',
-                'null'       => false,
+            'dOrder_id' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 11,
             ],
             'status' => [
                 'type'       => 'ENUM',
@@ -44,6 +43,7 @@ class Order extends Migration
 
         $this->forge->addKey('order_id', true);
         $this->forge->addForeignKey('User_ID', 'customer', 'User_ID', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('dOrder_id', 'delivery_order', 'dOrder_id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('order');
     }
 
