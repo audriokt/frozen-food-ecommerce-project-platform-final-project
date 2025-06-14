@@ -59,7 +59,8 @@ class PaymentController extends BaseController
             'order_date'      => date('Y-m-d H:i:s'),
             'total_price'     => $totalWithProtection,
             'payment_method'  => $method,
-            'shipping_address' => 'Jalan Paingan XI No. 9, RT.8/RW.7, Maguwoharjo, Depok (Kost putri) Depok, Kab. Sleman, DI Yogyakarta, 545637',
+            'shipping_address' => 'Jalan Paingan XI No. 9, RT.8/RW.7, Maguwoharjo,
+             Depok (Kost putri) Depok, Kab. Sleman, DI Yogyakarta, 545637',
         ];
 
         $orderModel->insert($orderData);
@@ -69,3 +70,5 @@ class PaymentController extends BaseController
         ]);
     }
 }
+
+

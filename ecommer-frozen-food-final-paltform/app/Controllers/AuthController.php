@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Models\CustomerModel;
 use App\Models\CartModel;
-
 class AuthController extends BaseController
 {
     protected $customerModel;
@@ -48,7 +45,6 @@ class AuthController extends BaseController
                 return redirect()->to('/login')->withInput();
             }
         }
-
         return view('Customer/Login_Page');
     }
 
@@ -104,46 +100,36 @@ class AuthController extends BaseController
                 return redirect()->to('/register')->withInput();
             }
         }
-
         return view('Customer/Register_Page');
     }
-
     public function logout()
     {
         session()->destroy();
         session()->setFlashdata('success', 'Anda berhasil logout.');
         return redirect()->to('/login');
     }
-
     public function profile()
     {
         if (!session()->has('User_ID')) {
             return redirect()->to('/login');
         }
-
         $customerModel = new CustomerModel();
         $userId = session()->get('User_ID');
         $data['user'] = $customerModel->find($userId);
-
         return view('Customer/Profile_Page', $data);
     }
-
     public function updateProfile()
     {
         if (!session()->has('User_ID')) {
             return redirect()->to('/login');
         }
-
         $customerModel = new CustomerModel();
         $userId = session()->get('User_ID');
-
         $data = [
             'Name'  => $this->request->getPost('Name'),
             'Email' => $this->request->getPost('Email'),
         ];
-
         $customerModel->update($userId, $data);
-
         return redirect()->to('/profile')->with('success', 'Profil berhasil diperbarui.');
     }
 }

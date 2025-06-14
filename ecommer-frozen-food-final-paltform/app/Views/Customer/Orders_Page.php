@@ -1,7 +1,5 @@
 <?= $this->extend('layouts/template') ?>
-
 <?= $this->section('content') ?>
-
 <div class="container" style="margin-top: 130px;">
 
     <!-- Tombol kembali -->
@@ -33,7 +31,8 @@
 
                     <!-- Gambar Produk -->
                     <a class="nav-link" href="/product/<?= $item['product_id'] ?>">
-                        <img src="<?= base_url($item['path']) ?>" class="card-img-top" alt="<?= htmlspecialchars($item['product_name']) ?>" width="200px" height="200px">
+                        <img src="<?= base_url($item['path']) ?>" class="card-img-top" alt="<?= htmlspecialchars($item['product_name']) ?>" 
+                        width="200px" height="200px">
                     </a>
                     
                     <!-- Detail Produk -->
@@ -66,5 +65,4 @@
         </div>
     </div>
 </div>
-
 <?= $this->endSection() ?>

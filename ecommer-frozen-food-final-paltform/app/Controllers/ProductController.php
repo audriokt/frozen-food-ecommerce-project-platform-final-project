@@ -18,7 +18,8 @@ class ProductController extends BaseController
     public function showAll()
     {
         $data = [
-            'products' => $this->productModel->findAll()
+            'products' => $this->productModel->paginate(12, 'product'),
+            'pager' => $this->productModel->pager,
         ];
         return view('Customer/Landing_Page_Cus', $data);
     }

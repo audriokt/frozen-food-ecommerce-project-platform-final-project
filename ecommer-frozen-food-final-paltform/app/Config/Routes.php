@@ -1,8 +1,5 @@
-
 <?php
-
 use CodeIgniter\Router\RouteCollection;
-
 /**
  * @var RouteCollection $routes
  */
@@ -38,3 +35,4 @@ $routes->get('/cart/checkout', 'CartController::checkout');
 $routes->post('/cart/checkout', 'PaymentController::bayar');
 
 $routes->get('/Cart_Page', 'Pages::index2');
+

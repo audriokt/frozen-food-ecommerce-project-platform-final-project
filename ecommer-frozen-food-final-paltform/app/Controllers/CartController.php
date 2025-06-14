@@ -30,7 +30,8 @@ class CartController extends BaseController
         $userId = session()->get('User_ID');
 
         // Ambil data cart dengan join ke tabel produk
-        $cartItems = $this->cartModel->select('cart.*, product.name as product_name, product.price as price, product.path as path, product.c_id as category, category.name as category_name')
+        $cartItems = $this->cartModel->select('cart.*, product.name as product_name, product.price as price, 
+        product.path as path, product.c_id as category, category.name as category_name')
             ->join('product', 'product.p_id = cart.p_id')
             ->join('category', 'category.c_id = product.c_id')
             ->where('cart.User_ID', $userId)
