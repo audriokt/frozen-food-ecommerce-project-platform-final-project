@@ -42,4 +42,14 @@ class ProductController extends BaseController
         ];
         return view('Customer/Category_Base', $data);
     }
+
+    public function search()
+    {
+        $keyword = $this->request->getVar('keyword');
+        if (!$keyword) {
+            return redirect()->to('/LandingPage');
+        }
+        $products = $this->productModel->like('name', $keyword)->orLike('description', $keyword)->findAll();
+        return view('Customer/Search_Result', ['data' => $products]);
+    }
 }

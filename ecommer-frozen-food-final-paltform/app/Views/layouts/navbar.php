@@ -26,8 +26,8 @@
                             </li>
                         </ul>
                         <!-- Search Bar -->
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Ikan Cakalang Beku 1kg" aria-label="Search" style="background-color: #F4FBF3; width:400px; border: 1px solid #009B4D;" />
+                        <form class="d-flex" role="search" method="post" action="/product/search">
+                            <input class="form-control me-2" type="search" placeholder="Ikan Cakalang Beku 1kg" aria-label="Search" style="background-color: #F4FBF3; width:400px; border: 1px solid #009B4D;"  name="keyword"/>
                             <button class="btn btn-outline-success" type="submit">Cari</button>
                         </form>
                         <!--Cart -->

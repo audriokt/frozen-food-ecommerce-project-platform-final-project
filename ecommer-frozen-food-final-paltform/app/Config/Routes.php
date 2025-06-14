@@ -1,5 +1,7 @@
 <?php
+
 use CodeIgniter\Router\RouteCollection;
+
 /**
  * @var RouteCollection $routes
  */
@@ -16,6 +18,7 @@ $routes->get('/logout', 'AuthController::logout');
 
 $routes->get('/LandingPage', 'ProductController::showAll');
 $routes->get('/LandingPage/(:any)', 'ProductController::showCategory/$1');
+$routes->post('/product/search', 'ProductController::search');
 
 $routes->get('/cart', 'CartController::index');
 $routes->get('/cart/add/(:any)', 'CartController::add/$1');
@@ -30,9 +33,8 @@ $routes->post('/cart/update', 'CartController::update');
 $routes->post('/cart/checkout', 'CartController::checkout');
 $routes->post('/cart/checkout/(:any)', 'CartController::directCheckout/$1');
 
-$routes->post('/checkout/bayar','PaymentController::bayar');
+$routes->post('/checkout/bayar', 'PaymentController::bayar');
 $routes->get('/cart/checkout', 'CartController::checkout');
 $routes->post('/cart/checkout', 'PaymentController::bayar');
 
 $routes->get('/Cart_Page', 'Pages::index2');
-
