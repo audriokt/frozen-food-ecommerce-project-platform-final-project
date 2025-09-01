@@ -36,7 +36,7 @@ This project is a collaborative effort to build a modern and efficient e-commerc
 ![Screenshot 2025-06-11 155352](https://github.com/user-attachments/assets/af3d3899-9c62-4d8e-835b-7878f54eb08e)
 
 ## Demo 
-### link
-!(https://drive.google.com/file/d/1c7tAtCcspvaCu8A2oCTQHmlqGa0qZ899/view?usp=sharing)
+### ![link](https://drive.google.com/file/d/1c7tAtCcspvaCu8A2oCTQHmlqGa0qZ899/view?usp=sharing)
+
 
 
